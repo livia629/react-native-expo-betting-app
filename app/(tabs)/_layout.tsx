@@ -1,23 +1,15 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View, Text } from 'react-native';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
             // Use a transparent background on iOS to show the blur effect
@@ -29,15 +21,73 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarLabel: "", // Hide default label to prevent duplication
+          tabBarIcon: ({ color }) => (
+            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+              <Ionicons size={20} name="home-outline" color="black" />
+              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'主頁'}</Text>
+            </View>
+          ),
+        }}
+      />;
+      <Tabs.Screen
+        name="discover"
+        options={{
+          tabBarLabel: "", // Hide default label to prevent duplication
+          tabBarIcon: ({ color }) => (
+            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+              <Ionicons size={20} name="search-outline" color="black" />
+              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'馬上發現'}</Text>
+            </View>
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="betslip"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarLabel: "", // Hide default label to prevent duplication
+          tabBarIcon: ({ color }) => (
+            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+              <Ionicons size={20} name="document-text-outline" color="black" />
+              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'投注區'}</Text>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="ewallet"
+        options={{
+          tabBarLabel: "", // Hide default label to prevent duplication
+          tabBarIcon: ({ color }) => (
+            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+              <Ionicons size={20} name="wallet-outline" color="black" />
+              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'電子錢包'}</Text>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="more"
+        options={{
+          tabBarLabel: "", // Hide default label to prevent duplication
+          tabBarIcon: ({ color }) => (
+            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+              <Ionicons size={20} name="ellipsis-horizontal" color="black" />
+              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'更多'}</Text>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="me"
+        options={{
+          tabBarLabel: "", // Hide default label to prevent duplication
+          tabBarIcon: ({ color }) => (
+            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+              <Ionicons size={20} name="person-circle-outline" color="black" />
+              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'我'}</Text>
+            </View>
+          ),
         }}
       />
     </Tabs>
