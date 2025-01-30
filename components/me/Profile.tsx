@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons, FontAwesome5    } from '@expo/vector-icons';
 
 const Profile = () => {
@@ -7,7 +7,11 @@ const Profile = () => {
 
   return (
     <>
-        <View style={styles.profileTop}>
+          <ImageBackground 
+              source={require('../../assets/images/59279.jpg')} // Replace with your actual image path
+              style={styles.profileTop}
+              // resizeMode="cover" // Ensures the image scales correctly
+          >
             <View style={styles.profileBalance}>
                 <Text style={styles.balanceText}>結餘</Text>
                 <TouchableOpacity
@@ -23,7 +27,7 @@ const Profile = () => {
             </View>
             <Text style={styles.balance}>{isVisible ? '$*****' : '$500'}</Text>
             <Text style={styles.account}>投注戶口號碼: 15339692</Text>
-        </View>
+        </ImageBackground>
         <View style={styles.profileCenter}>
             <View style={styles.profileCenterDiv}>
                 <View style={styles.profileCenterBox}>
@@ -80,20 +84,21 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
   profileTop: {
-    backgroundColor: '#4169E1',
+    width: '100%',
+    height: 180,
     paddingHorizontal: 30,
-    paddingBottom: 80
   },
   profileBalance: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop: 5
   },
   profileButton: {
     padding: 10,
   },
   balanceText: {
     fontSize: 16,
-    color: '#fff'
+    color: '#fff',
   },
   balance: {
     color: '#fff',

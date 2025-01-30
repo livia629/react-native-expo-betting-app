@@ -25,7 +25,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
               <Ionicons size={20} name="home-outline" color="black" />
-              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'主頁'}</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'主頁'}</Text>
             </View>
           ),
         }}
@@ -37,7 +37,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
               <Ionicons size={20} name="search-outline" color="black" />
-              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'馬上發現'}</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'馬上發現'}</Text>
             </View>
           ),
         }}
@@ -49,7 +49,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
               <Ionicons size={20} name="document-text-outline" color="black" />
-              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'投注區'}</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'投注區'}</Text>
             </View>
           ),
         }}
@@ -61,7 +61,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
               <Ionicons size={20} name="wallet-outline" color="black" />
-              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'電子錢包'}</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'電子錢包'}</Text>
             </View>
           ),
         }}
@@ -73,7 +73,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
               <Ionicons size={20} name="ellipsis-horizontal" color="black" />
-              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'更多'}</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'更多'}</Text>
             </View>
           ),
         }}
@@ -85,7 +85,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
               <Ionicons size={20} name="person-circle-outline" color="black" />
-              <Text style={{ fontSize: 10, color: 'black' }} numberOfLines={1}>{'我'}</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'我'}</Text>
             </View>
           ),
         }}
