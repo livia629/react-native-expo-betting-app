@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
-import { FontAwesome, MaterialCommunityIcons, FontAwesome5    } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useFonts } from 'expo-font';
 
 const Profile = () => {
   const [isVisible, setIsVisible] = useState(true); // State for balance visibility
+  const [fontsLoaded] = useFonts({
+    'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
+    'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
+  });
 
   return (
     <>
@@ -20,7 +25,7 @@ const Profile = () => {
                 >
                     {isVisible ? 
                     <Image 
-                      source={require('../../assets/images/圖片_20250201015444.png')} 
+                      source={require('../../assets/images/圖片_20250201123414.png')} 
                       style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
                     /> : 
                     <Image 
@@ -100,15 +105,18 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   balanceText: {
+    fontFamily: 'NotoSansTC-Regular',
     fontSize: 16,
     color: '#fff',
   },
   balance: {
+    marginTop: -5,
     color: '#fff',
     fontSize: 24,
     fontWeight: '600',
   },
   account: {
+    fontFamily: 'NotoSansTC-Regular',
     fontSize: 14,
     color: '#fff',
     marginTop: 10
@@ -148,6 +156,7 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
   myHkjc: {
+    fontFamily: 'NotoSansTC-Regular',
     fontSize: 20,
     fontWeight: '800',
     color: '#000'
@@ -171,8 +180,9 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   myCouponsText: {
+    fontFamily: 'NotoSansTC-Regular',
     marginTop: 5,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600',
     color: '#555'
   },
@@ -193,14 +203,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   suggestionText: {
+    fontFamily: 'NotoSansTC-Regular',
     fontSize: 16,
-    fontWeight: '600',
     color: '#000',
     marginLeft: 10
   },
   suggestiondropIcon: {
     fontSize: 20,
-    fontWeight: 800,
     color: '#000',
   },
   logout: {
@@ -215,8 +224,8 @@ const styles = StyleSheet.create({
     justifyContent:'center'
   },
   logoutText: {
+    fontFamily: 'NotoSansTC-Regular',
     fontSize: 16,
-    fontWeight: '600',
     color: '#191970',
   }
   

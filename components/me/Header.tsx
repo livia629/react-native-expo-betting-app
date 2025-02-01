@@ -1,7 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { useFonts } from 'expo-font';
 
 const Header = () => {
+  const [fontsLoaded] = useFonts({
+    'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
+    'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
+  });
+
   return (
     <View style={styles.header}>
         <Text style={styles.headerText}>我</Text>
@@ -18,6 +24,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20
   },
   headerText: {
+    fontFamily: 'NotoSansTC-Regular',
     color: '#fff',
     fontSize: 20,
     fontWeight: '600',

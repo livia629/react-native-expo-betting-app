@@ -1,11 +1,13 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform, View, Text, Image } from 'react-native';
-
-import { Ionicons } from '@expo/vector-icons';
+import { useFonts } from 'expo-font';
 
 export default function TabLayout() {
-
+  const [fontsLoaded] = useFonts({
+    'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
+    'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
+  });
   return (
     <Tabs
       screenOptions={{
@@ -28,7 +30,7 @@ export default function TabLayout() {
                 source={require('../../assets/images/圖片_20250201015452.png')} 
                 style={{ width: 22, height: 22, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'主頁'}</Text>
+              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'主頁'}</Text>
             </View>
           ),
         }}
@@ -43,7 +45,7 @@ export default function TabLayout() {
                 source={require('../../assets/images/圖片_20250201015432.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'馬上發現'}</Text>
+              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'馬上發現'}</Text>
             </View>
           ),
         }}
@@ -58,7 +60,7 @@ export default function TabLayout() {
                 source={require('../../assets/images/圖片_20250201015430.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'投注區'}</Text>
+              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'投注區'}</Text>
             </View>
           ),
         }}
@@ -73,7 +75,7 @@ export default function TabLayout() {
                 source={require('../../assets/images/圖片_20250201015427.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'電子錢包'}</Text>
+              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'電子錢包'}</Text>
             </View>
           ),
         }}
@@ -88,7 +90,7 @@ export default function TabLayout() {
                 source={require('../../assets/images/圖片_20250201015418.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'更多'}</Text>
+              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'更多'}</Text>
             </View>
           ),
         }}
@@ -103,7 +105,7 @@ export default function TabLayout() {
                 source={require('../../assets/images/圖片_20250201015434.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'我'}</Text>
+              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'我'}</Text>
             </View>
           ),
         }}
