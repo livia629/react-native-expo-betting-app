@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform, View, Text } from 'react-native';
+import { Platform, View, Text, Image } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 
@@ -24,7 +24,10 @@ export default function TabLayout() {
           tabBarLabel: "", // Hide default label to prevent duplication
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
-              <Ionicons size={20} name="home-outline" color="black" />
+              <Image 
+                source={require('../../assets/images/圖片_20250201015452.png')} 
+                style={{ width: 22, height: 22, resizeMode: 'contain' }} // Adjust size accordingly
+              />
               <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'主頁'}</Text>
             </View>
           ),
@@ -36,7 +39,10 @@ export default function TabLayout() {
           tabBarLabel: "", // Hide default label to prevent duplication
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
-              <Ionicons size={20} name="search-outline" color="black" />
+              <Image 
+                source={require('../../assets/images/圖片_20250201015432.png')} 
+                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+              />
               <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'馬上發現'}</Text>
             </View>
           ),
@@ -48,7 +54,10 @@ export default function TabLayout() {
           tabBarLabel: "", // Hide default label to prevent duplication
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
-              <Ionicons size={20} name="document-text-outline" color="black" />
+              <Image 
+                source={require('../../assets/images/圖片_20250201015430.png')} 
+                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+              />
               <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'投注區'}</Text>
             </View>
           ),
@@ -60,7 +69,10 @@ export default function TabLayout() {
           tabBarLabel: "", // Hide default label to prevent duplication
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
-              <Ionicons size={20} name="wallet-outline" color="black" />
+              <Image 
+                source={require('../../assets/images/圖片_20250201015427.png')} 
+                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+              />
               <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'電子錢包'}</Text>
             </View>
           ),
@@ -72,7 +84,10 @@ export default function TabLayout() {
           tabBarLabel: "", // Hide default label to prevent duplication
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
-              <Ionicons size={20} name="ellipsis-horizontal" color="black" />
+              <Image 
+                source={require('../../assets/images/圖片_20250201015418.png')} 
+                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+              />
               <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'更多'}</Text>
             </View>
           ),
@@ -84,7 +99,10 @@ export default function TabLayout() {
           tabBarLabel: "", // Hide default label to prevent duplication
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
-              <Ionicons size={20} name="person-circle-outline" color="black" />
+              <Image 
+                source={require('../../assets/images/圖片_20250201015434.png')} 
+                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+              />
               <Text style={{ fontSize: 12, fontWeight: 'bold', color: 'black' }} numberOfLines={1}>{'我'}</Text>
             </View>
           ),

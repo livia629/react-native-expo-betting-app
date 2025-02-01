@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons, FontAwesome5    } from '@expo/vector-icons';
 
 const Profile = () => {
@@ -8,7 +8,7 @@ const Profile = () => {
   return (
     <>
           <ImageBackground 
-              source={require('../../assets/images/59279.jpg')} // Replace with your actual image path
+              source={require('../../assets/images/圖片_20250201015406.jpg')} // Replace with your actual image path
               style={styles.profileTop}
               // resizeMode="cover" // Ensures the image scales correctly
           >
@@ -18,11 +18,16 @@ const Profile = () => {
                     style={styles.profileButton}
                     onPress={() => setIsVisible(!isVisible)} // Toggle visibility
                 >
-                    <FontAwesome 
-                        name={isVisible ? 'eye-slash' : 'eye'} // Change icon dynamically
-                        size={18}
-                        color="#fff"
+                    {isVisible ? 
+                    <Image 
+                      source={require('../../assets/images/圖片_20250201015444.png')} 
+                      style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+                    /> : 
+                    <Image 
+                      source={require('../../assets/images/圖片_20250201015444.png')} 
+                      style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
                     />
+                    }
                 </TouchableOpacity>
             </View>
             <Text style={styles.balance}>{isVisible ? '$*****' : '$500'}</Text>
@@ -31,29 +36,23 @@ const Profile = () => {
         <View style={styles.profileCenter}>
             <View style={styles.profileCenterDiv}>
                 <View style={styles.profileCenterBox}>
-                    <MaterialCommunityIcons 
-                        name='bank-transfer' 
-                        size={28} 
-                        color="white" 
-                        style={styles.iconBackground} 
+                    <Image 
+                      source={require('../../assets/images/圖片_20250201015446.png')} 
+                      style={{ width: 52, height: 52, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>轉賬服務</Text>
                 </View>
                 <View style={styles.profileCenterBox}>
-                    <FontAwesome 
-                        name='list' 
-                        size={28} 
-                        color="white" 
-                        style={styles.iconBackground} 
+                    <Image 
+                      source={require('../../assets/images/圖片_20250201015442.png')} 
+                      style={{ width: 52, height: 52, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>是次交易紀錄</Text>
                 </View>
                 <View style={styles.profileCenterBox}>
-                    <FontAwesome 
-                        name='book' 
-                        size={28} 
-                        color="white" 
-                        style={styles.iconBackground} 
+                    <Image 
+                      source={require('../../assets/images/圖片_20250201015440.png')} 
+                      style={{ width: 52, height: 52, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>戶口紀錄</Text>
                 </View>
@@ -62,14 +61,18 @@ const Profile = () => {
         <View style={styles.profileBottom}>
             <Text style={styles.myHkjc}>我的HKJC</Text>
             <View style={styles.myCouponsBox}>
-                <View style={styles.iconContainer}>
-                  <FontAwesome5 name="ticket-alt" size={14} color="white" />
-                </View> 
+                <Image 
+                  source={require('../../assets/images/圖片_20250201015438.png')} 
+                  style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                />
                 <Text style={styles.myCouponsText}>我的優惠券</Text>
             </View>
             <View style={styles.suggestion}>
                 <View style={styles.suggestionView}>
-                    <MaterialCommunityIcons name="message-text" size={24} color="#191970" />
+                    <Image 
+                      source={require('../../assets/images/圖片_20250201015436.png')} 
+                      style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                    />
                     <Text style={styles.suggestionText}>意見/建議</Text>
                 </View>
                 <MaterialCommunityIcons name="chevron-right" size={24} color="black" />
