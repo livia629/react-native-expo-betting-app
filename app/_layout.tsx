@@ -5,7 +5,9 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-
+import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -16,6 +18,7 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (loaded) {
@@ -31,9 +34,16 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: '#191970' }, // Set all headers to black
-          headerTintColor: 'white', // Set title & icons to white
-          headerTitleStyle: { fontSize: 18, fontWeight: 'bold' }, // Customize title font
+          headerStyle: { backgroundColor: '#191970' },
+          headerTintColor: 'white',
+          headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+          headerTitleAlign: 'center',
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.goBack()} style={ styles.backBtn }>
+              <MaterialIcons name="chevron-left" size={18} color="white" />
+              <Text style={styles.backText}>返回</Text>
+            </TouchableOpacity>
+          ),
         }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -44,3 +54,14 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  backBtn: {
+    paddingLeft: 15,
+    flexDirection: 'row',
+    alignItems: "center",
+  },
+  backText: {
+    color: 'white'
+  }
+})
