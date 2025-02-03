@@ -219,6 +219,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: '#fff',
     marginTop: 30,
+    padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'center'
@@ -227,6 +228,7 @@ const styles = StyleSheet.create({
     fontFamily: 'NotoSansTC-Regular',
     fontSize: 16,
     color: '#191970',
+    fontWeight: 'bold'
   }
   
 });
