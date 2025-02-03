@@ -11,7 +11,7 @@ const EditProfile = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.description}>這裡是您的意見和建議頁面。</Text>
+      <Text style={styles.description}>我們重視您的回饋。每則評論都很重要！</Text>
       <View style={styles.form}>
         <Text style={styles.label}>$$</Text>
         <TextInput 
