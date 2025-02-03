@@ -29,8 +29,15 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
+      <Stack
+        screenOptions={{
+          headerStyle: { backgroundColor: '#191970' }, // Set all headers to black
+          headerTintColor: 'white', // Set title & icons to white
+          headerTitleStyle: { fontSize: 18, fontWeight: 'bold' }, // Customize title font
+        }}
+      >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="routers/EditProfile" options={{ title: '意見/建議' }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

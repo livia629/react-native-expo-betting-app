@@ -11,7 +11,10 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
+        headerStyle: { backgroundColor: '#191970' }, 
+        headerTintColor: 'white',
+        headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+        headerTitleAlign: 'center',
         tabBarStyle: Platform.select({
           ios: {
             // Use a transparent background on iOS to show the blur effect
@@ -98,6 +101,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="me"
         options={{
+          title: "我",
           tabBarLabel: "", // Hide default label to prevent duplication
           tabBarIcon: ({ color }) => (
             <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>

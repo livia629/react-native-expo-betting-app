@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
+import { useRouter } from 'expo-router';
 
 const Profile = () => {
   const [isVisible, setIsVisible] = useState(true); // State for balance visibility
@@ -9,6 +10,7 @@ const Profile = () => {
     'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
     'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
   });
+  const router = useRouter();
 
   return (
     <>
@@ -72,16 +74,18 @@ const Profile = () => {
                 />
                 <Text style={styles.myCouponsText}>我的優惠券</Text>
             </View>
-            <View style={styles.suggestion}>
-                <View style={styles.suggestionView}>
-                    <Image 
-                      source={require('../../assets/images/圖片_20250201015436.png')} 
-                      style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
-                    />
-                    <Text style={styles.suggestionText}>意見/建議</Text>
-                </View>
-                <MaterialCommunityIcons name="chevron-right" size={24} color="black" />
-            </View>
+            <TouchableOpacity onPress={() => router.push('/routers/EditProfile')}>
+              <View style={styles.suggestion}>
+                  <View style={styles.suggestionView}>
+                      <Image 
+                        source={require('../../assets/images/圖片_20250201015436.png')} 
+                        style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                      />
+                      <Text style={styles.suggestionText}>意見/建議</Text>
+                  </View>
+                  <MaterialCommunityIcons name="chevron-right" size={24} color="black" />
+              </View>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.logout}>
                 <Text style={styles.logoutText}>登出</Text>
             </TouchableOpacity>
