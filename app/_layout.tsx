@@ -57,7 +57,6 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
   backBtn: {
-    paddingLeft: 15,
     flexDirection: 'row',
     alignItems: "center",
   },

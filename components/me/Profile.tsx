@@ -17,7 +17,7 @@ const Profile = () => {
           <ImageBackground 
               source={require('../../assets/images/圖片_20250201015406.jpg')} // Replace with your actual image path
               style={styles.profileTop}
-              // resizeMode="cover" // Ensures the image scales correctly
+              resizeMode="cover" 
           >
             <View style={styles.profileBalance}>
                 <Text style={styles.balanceText}>結餘</Text>
@@ -96,7 +96,6 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
   profileTop: {
-    width: '100%',
     height: 180,
     paddingHorizontal: 30,
   },
@@ -123,13 +122,12 @@ const styles = StyleSheet.create({
     fontFamily: 'NotoSansTC-Regular',
     fontSize: 14,
     color: '#fff',
-    marginTop: 10
   },
   profileCenter: {
     flexDirection: 'row',
     marginHorizontal: 15,
     backgroundColor: 'transparent',
-    marginTop: -60
+    marginTop: -50
   },
   profileCenterDiv: {
     width: '100%',
@@ -146,7 +144,6 @@ const styles = StyleSheet.create({
   profileCenterBox: {
     width: '33%',
     alignItems: 'center',
-    // justifyContent: 'center',
     flexDirection: 'column',
   },
   iconBackground: {
@@ -157,7 +154,7 @@ const styles = StyleSheet.create({
   profileBottom: {
     height: '100%',
     paddingHorizontal: 15,
-    marginTop: 15
+    marginTop: 20
   },
   myHkjc: {
     fontFamily: 'NotoSansTC-Regular',
@@ -172,22 +169,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     elevation: 10,
     marginTop: 10,
-    padding: 15
+    padding: 15,
+    gap: 10
   },
   iconContainer: {
     width: 25,
     height: 25,
-    backgroundColor: '#FFD700', // Yellow background
-    borderRadius: 50, // Circular shape
+    backgroundColor: '#FFD700',
+    borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 5
   },
   myCouponsText: {
     fontFamily: 'NotoSansTC-Regular',
-    marginTop: 5,
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: '#555'
   },
   suggestion: {
@@ -196,7 +192,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 10,
-    marginTop: 25,
+    marginTop: 30,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -210,7 +206,8 @@ const styles = StyleSheet.create({
     fontFamily: 'NotoSansTC-Regular',
     fontSize: 16,
     color: '#000',
-    marginLeft: 10
+    marginLeft: 10,
+    fontWeight: 'bold'
   },
   suggestiondropIcon: {
     fontSize: 20,
@@ -221,8 +218,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 40,
     backgroundColor: '#fff',
-    marginTop: 25,
-    padding: 10,
+    marginTop: 30,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'center'

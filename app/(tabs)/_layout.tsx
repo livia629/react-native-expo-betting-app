@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform, View, Text, Image } from 'react-native';
+import { Platform, View, Text, Image, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 
 export default function TabLayout() {
@@ -17,7 +17,6 @@ export default function TabLayout() {
         headerTitleAlign: 'center',
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
           default: {},
@@ -27,13 +26,13 @@ export default function TabLayout() {
         name="index"
         options={{
           tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: ({ color }) => (
-            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+          tabBarIcon: () => (
+             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015452.png')} 
                 style={{ width: 22, height: 22, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'主頁'}</Text>
+              <Text style={styles.tabText}>{'主頁'}</Text>
             </View>
           ),
         }}
@@ -42,13 +41,13 @@ export default function TabLayout() {
         name="discover"
         options={{
           tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: ({ color }) => (
-            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+          tabBarIcon: () => (
+             <View style={{ alignItems: 'center', marginTop: 10, width: 80 }}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015432.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'馬上發現'}</Text>
+              <Text style={styles.tabText}>{'馬上發現'}</Text>
             </View>
           ),
         }}
@@ -57,13 +56,13 @@ export default function TabLayout() {
         name="betslip"
         options={{
           tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: ({ color }) => (
-            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+          tabBarIcon: () => (
+             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015430.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'投注區'}</Text>
+              <Text style={styles.tabText}>{'投注區'}</Text>
             </View>
           ),
         }}
@@ -72,13 +71,13 @@ export default function TabLayout() {
         name="ewallet"
         options={{
           tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: ({ color }) => (
-            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+          tabBarIcon: () => (
+             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015427.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'電子錢包'}</Text>
+              <Text style={styles.tabText}>{'電子錢包'}</Text>
             </View>
           ),
         }}
@@ -87,13 +86,13 @@ export default function TabLayout() {
         name="more"
         options={{
           tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: ({ color }) => (
-            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+          tabBarIcon: () => (
+             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015418.png')} 
                 style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
               />
-              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'更多'}</Text>
+              <Text style={styles.tabText}>{'更多'}</Text>
             </View>
           ),
         }}
@@ -102,14 +101,17 @@ export default function TabLayout() {
         name="me"
         options={{
           title: "我",
-          tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: ({ color }) => (
-            <View style={{ alignItems: 'center', paddingBottom: 10, marginTop: 20 }}>
+          tabBarLabel: "", // Hide default label
+          tabBarShowLabel: false, // Ensures no default text appears
+          tabBarIcon: () => (
+            <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015434.png')} 
-                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+                style={{ width: 24, height: 24, resizeMode: 'contain' }} 
               />
-              <Text style={{ fontSize: 12, color: 'black', fontFamily: 'NotoSansTC-Regular' }} numberOfLines={1}>{'我'}</Text>
+              <Text style={styles.tabText}>
+                我
+              </Text>
             </View>
           ),
         }}
@@ -117,3 +119,12 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  tabText: {
+    fontSize: 12,
+    color: 'black', 
+    fontFamily: 'NotoSansTC-Regular', 
+    fontWeight: 'bold'
+  }
+})
