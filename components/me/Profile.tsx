@@ -45,21 +45,21 @@ const Profile = () => {
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015446.png')} 
-                      style={{ width: 52, height: 52, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 58, height: 58, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>轉賬服務</Text>
                 </View>
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015442.png')} 
-                      style={{ width: 52, height: 52, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 58, height: 58, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>是次交易紀錄</Text>
                 </View>
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015440.png')} 
-                      style={{ width: 52, height: 52, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 58, height: 58, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>戶口紀錄</Text>
                 </View>
@@ -70,7 +70,7 @@ const Profile = () => {
             <View style={styles.myCouponsBox}>
                 <Image 
                   source={require('../../assets/images/圖片_20250201015438.png')} 
-                  style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                  style={{ width: 30, height: 30, resizeMode: 'contain' }} // Adjust size accordingly
                 />
                 <Text style={styles.myCouponsText}>我的優惠券</Text>
             </View>
@@ -79,7 +79,7 @@ const Profile = () => {
                   <View style={styles.suggestionView}>
                       <Image 
                         source={require('../../assets/images/圖片_20250201015436.png')} 
-                        style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                        style={{ width: 30, height: 30, resizeMode: 'contain' }} // Adjust size accordingly
                       />
                       <Text style={styles.suggestionText}>意見/建議</Text>
                   </View>
@@ -96,13 +96,12 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
   profileTop: {
-    height: 180,
+    height: 190,
     paddingHorizontal: 30,
   },
   profileBalance: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 5
   },
   profileButton: {
     padding: 10,
@@ -111,11 +110,12 @@ const styles = StyleSheet.create({
     fontFamily: 'NotoSansTC-Regular',
     fontSize: 16,
     color: '#fff',
+    fontWeight: 'bold'
   },
   balance: {
     marginTop: -5,
     color: '#fff',
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: '600',
   },
   account: {
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 15,
     backgroundColor: 'transparent',
-    marginTop: -50
+    marginTop: -60
   },
   profileCenterDiv: {
     width: '100%',
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   profileBottom: {
     height: '100%',
     paddingHorizontal: 15,
-    marginTop: 20
+    marginTop: 15
   },
   myHkjc: {
     fontFamily: 'NotoSansTC-Regular',
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   },
   myCouponsText: {
     fontFamily: 'NotoSansTC-Regular',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#555'
   },
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 10,
-    marginTop: 30,
+    marginTop: 25,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 40,
     backgroundColor: '#fff',
-    marginTop: 30,
+    marginTop: 25,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',

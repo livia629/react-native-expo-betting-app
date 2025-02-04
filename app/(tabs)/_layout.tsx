@@ -11,7 +11,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { backgroundColor: '#191970' }, 
+        headerStyle: { backgroundColor: '#022f66' }, 
         headerTintColor: 'white',
         headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
         headerTitleAlign: 'center',
@@ -45,7 +45,7 @@ export default function TabLayout() {
              <View style={{ alignItems: 'center', marginTop: 10, width: 80 }}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015432.png')} 
-                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+                style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
               />
               <Text style={styles.tabText}>{'馬上發現'}</Text>
             </View>
@@ -60,7 +60,7 @@ export default function TabLayout() {
              <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015430.png')} 
-                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+                style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
               />
               <Text style={styles.tabText}>{'投注區'}</Text>
             </View>
@@ -75,7 +75,7 @@ export default function TabLayout() {
              <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015427.png')} 
-                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+                style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
               />
               <Text style={styles.tabText}>{'電子錢包'}</Text>
             </View>
@@ -90,7 +90,7 @@ export default function TabLayout() {
              <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015418.png')} 
-                style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
+                style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
               />
               <Text style={styles.tabText}>{'更多'}</Text>
             </View>
@@ -107,7 +107,7 @@ export default function TabLayout() {
             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015434.png')} 
-                style={{ width: 24, height: 24, resizeMode: 'contain' }} 
+                style={{ width: 28, height: 28, resizeMode: 'contain' }} 
               />
               <Text style={styles.tabText}>
                 我
