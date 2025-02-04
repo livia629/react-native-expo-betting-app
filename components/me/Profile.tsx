@@ -1,16 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback  } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Profile = () => {
-  const [isVisible, setIsVisible] = useState(true); // State for balance visibility
+  const [isVisible, setIsVisible] = useState(true); 
+  const [balance, setBalance] = useState('$*****'); 
+  const [account, setAccount] = useState('投注戶口號碼: 15339692');
   const [fontsLoaded] = useFonts({
     'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
     'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
   });
   const router = useRouter();
+
+  // Load profile data every time the screen is focused
+  useFocusEffect(
+    useCallback(() => {
+      const loadProfileData = async () => {
+        try {
+          const savedBalance = await AsyncStorage.getItem('balance');
+          const savedAccount = await AsyncStorage.getItem('account');
+          if (savedBalance) setBalance(`$${savedBalance}`);
+          if (savedAccount) setAccount(`投注戶口號碼: ${savedAccount}`);
+        } catch (error) {
+          console.error('Failed to load data', error);
+        }
+      };
+      loadProfileData();
+    }, [])
+  );
 
   return (
     <>
@@ -26,19 +47,13 @@ const Profile = () => {
                     onPress={() => setIsVisible(!isVisible)} // Toggle visibility
                 >
                     {isVisible ? 
-                    <Image 
-                      source={require('../../assets/images/圖片_20250201123414.png')} 
-                      style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
-                    /> : 
-                    <Image 
-                      source={require('../../assets/images/圖片_20250201015444.png')} 
-                      style={{ width: 24, height: 24, resizeMode: 'contain' }} // Adjust size accordingly
-                    />
+                      <Image source={require('../../assets/images/圖片_20250201123414.png')} style={styles.eyeIcon} /> : 
+                      <Image source={require('../../assets/images/圖片_20250201015444.png')} style={styles.eyeIcon} />
                     }
                 </TouchableOpacity>
             </View>
-            <Text style={styles.balance}>{isVisible ? '$*****' : '$500'}</Text>
-            <Text style={styles.account}>投注戶口號碼: 15339692</Text>
+            <Text style={styles.balance}>{isVisible ? '$*****' : balance}</Text>
+            <Text style={styles.account}>{account}</Text>
         </ImageBackground>
         <View style={styles.profileCenter}>
             <View style={styles.profileCenterDiv}>
@@ -106,6 +121,7 @@ const styles = StyleSheet.create({
   profileButton: {
     padding: 10,
   },
+  eyeIcon: { width: 24, height: 24, resizeMode: 'contain' },
   balanceText: {
     fontFamily: 'NotoSansTC-Regular',
     fontSize: 16,
