@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
+import CustomText from '../CustomText';
 
 const Profile = () => {
   const [isVisible, setIsVisible] = useState(true); 
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
   eyeIcon: { width: 24, height: 24, resizeMode: 'contain' },
   balanceText: {
     fontFamily: 'NotoSansTC-Medium',
-    fontWeight: 'bold',
+    includeFontPadding: false,
     fontSize: 16,
     color: '#fff',
   },
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
   },
   myCouponsText: {
     fontFamily: 'NotoSansTC-Medium',
-    fontWeight: 'bold',
+    includeFontPadding: false,
     fontSize: 18,
     color: '#555'
   },
@@ -219,7 +220,7 @@ const styles = StyleSheet.create({
   },
   suggestionText: {
     fontFamily: 'NotoSansTC-Medium',
-    fontWeight: 'bold',
+    includeFontPadding: false,
     fontSize: 18,
     color: '#000',
     marginLeft: 10,
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
   },
   logoutText: {
     fontFamily: 'NotoSansTC-Medium',
-    fontWeight: 'bold',
+    includeFontPadding: false,
     fontSize: 16,
     color: '#022f66',
   }
