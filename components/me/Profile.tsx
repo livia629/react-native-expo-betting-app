@@ -132,8 +132,9 @@ const styles = StyleSheet.create({
   },
   balance: {
     color: '#fff',
+    fontFamily: 'NotoSansTC-Medium',
+    includeFontPadding: false,
     fontSize: 28,
-    fontWeight: '600',
   },
   account: {
     fontFamily: 'NotoSansTC-Medium',
