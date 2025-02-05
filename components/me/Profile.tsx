@@ -38,7 +38,7 @@ const Profile = () => {
   return (
     <>
           <ImageBackground 
-              source={require('../../assets/images/圖片_20250201015406.jpg')} // Replace with your actual image path
+              source={require('../../assets/images/圖片_20250205214818.jpg')} // Replace with your actual image path
               style={styles.profileTop}
               resizeMode="cover" 
           >
@@ -127,7 +127,6 @@ const styles = StyleSheet.create({
   balanceText: {
     fontFamily: 'NotoSansTC-Medium',
     includeFontPadding: false,
-    paddingVertical: 2,
     fontSize: 16,
     color: '#fff',
   },
@@ -138,6 +137,7 @@ const styles = StyleSheet.create({
   },
   account: {
     fontFamily: 'NotoSansTC-Medium',
+    fontWeight: '600',
     fontSize: 14,
     color: '#fff',
   },
@@ -172,12 +172,11 @@ const styles = StyleSheet.create({
   profileBottom: {
     height: '100%',
     paddingHorizontal: 15,
-    marginTop: 10
+    marginTop: 20
   },
   myHkjc: {
     fontFamily: 'NotoSansTC-Medium',
     includeFontPadding: false,
-    paddingVertical:10,
     fontSize: 20,
     color: '#000',
   },
@@ -187,7 +186,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 10,
-    // marginTop: 10,
+    marginTop: 10,
     padding: 15,
     gap: 10
   },
@@ -202,7 +201,6 @@ const styles = StyleSheet.create({
   myCouponsText: {
     fontFamily: 'NotoSansTC-Medium',
     includeFontPadding: false,
-    paddingVertical: 1,
     fontSize: 18,
     color: '#555'
   },
@@ -247,7 +245,6 @@ const styles = StyleSheet.create({
   logoutText: {
     fontFamily: 'NotoSansTC-Medium',
     includeFontPadding: false,
-    paddingVertical: 1,
     fontSize: 16,
     color: '#022f66',
   }
