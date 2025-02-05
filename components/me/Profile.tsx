@@ -13,6 +13,7 @@ const Profile = () => {
   const [fontsLoaded] = useFonts({
     'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
     'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
+    'NotoSansTC-Medium': require('../../assets/fonts/NotoSansTC-Medium.ttf'),
   });
   const router = useRouter();
 
@@ -60,32 +61,32 @@ const Profile = () => {
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015446.png')} 
-                      style={{ width: 58, height: 58, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 68, height: 68, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>轉賬服務</Text>
                 </View>
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015442.png')} 
-                      style={{ width: 58, height: 58, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 68, height: 68, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>是次交易紀錄</Text>
                 </View>
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015440.png')} 
-                      style={{ width: 58, height: 58, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 68, height: 68, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>戶口紀錄</Text>
                 </View>
             </View>
         </View>
         <View style={styles.profileBottom}>
-            <Text style={styles.myHkjc}>我的HKJC</Text>
+        <Text style={styles.myHkjc}>我的HKJC</Text>
             <View style={styles.myCouponsBox}>
                 <Image 
                   source={require('../../assets/images/圖片_20250201015438.png')} 
-                  style={{ width: 30, height: 30, resizeMode: 'contain' }} // Adjust size accordingly
+                  style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
                 />
                 <Text style={styles.myCouponsText}>我的優惠券</Text>
             </View>
@@ -94,7 +95,7 @@ const Profile = () => {
                   <View style={styles.suggestionView}>
                       <Image 
                         source={require('../../assets/images/圖片_20250201015436.png')} 
-                        style={{ width: 30, height: 30, resizeMode: 'contain' }} // Adjust size accordingly
+                        style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
                       />
                       <Text style={styles.suggestionText}>意見/建議</Text>
                   </View>
@@ -123,19 +124,18 @@ const styles = StyleSheet.create({
   },
   eyeIcon: { width: 24, height: 24, resizeMode: 'contain' },
   balanceText: {
-    fontFamily: 'NotoSansTC-Regular',
+    fontFamily: 'NotoSansTC-Medium',
+    fontWeight: 'bold',
     fontSize: 16,
     color: '#fff',
-    fontWeight: 'bold'
   },
   balance: {
-    marginTop: -5,
     color: '#fff',
     fontSize: 28,
     fontWeight: '600',
   },
   account: {
-    fontFamily: 'NotoSansTC-Regular',
+    fontFamily: 'NotoSansTC-Medium',
     fontSize: 14,
     color: '#fff',
   },
@@ -170,13 +170,12 @@ const styles = StyleSheet.create({
   profileBottom: {
     height: '100%',
     paddingHorizontal: 15,
-    marginTop: 15
+    marginTop: 5
   },
   myHkjc: {
-    fontFamily: 'NotoSansTC-Regular',
+    fontFamily: 'NotoSansTC-Medium',
     fontSize: 20,
-    fontWeight: '800',
-    color: '#000'
+    color: '#000',
   },
   myCouponsBox: {
     width: '50%', 
@@ -184,7 +183,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 10,
-    marginTop: 10,
+    marginTop: -5,
     padding: 15,
     gap: 10
   },
@@ -197,9 +196,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   myCouponsText: {
-    fontFamily: 'NotoSansTC-Regular',
-    fontSize: 18,
+    fontFamily: 'NotoSansTC-Medium',
     fontWeight: 'bold',
+    fontSize: 18,
     color: '#555'
   },
   suggestion: {
@@ -209,21 +208,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     elevation: 10,
     marginTop: 25,
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   suggestionView: {
     flexDirection: 'row',
-    alignItems: 'center',
   },
   suggestionText: {
-    fontFamily: 'NotoSansTC-Regular',
-    fontSize: 16,
+    fontFamily: 'NotoSansTC-Medium',
+    fontWeight: 'bold',
+    fontSize: 18,
     color: '#000',
     marginLeft: 10,
-    fontWeight: 'bold'
   },
   suggestiondropIcon: {
     fontSize: 20,
@@ -235,16 +234,16 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: '#fff',
     marginTop: 25,
-    padding: 10,
+    padding: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'center'
   },
   logoutText: {
-    fontFamily: 'NotoSansTC-Regular',
+    fontFamily: 'NotoSansTC-Medium',
+    fontWeight: 'bold',
     fontSize: 16,
-    color: '#191970',
-    fontWeight: 'bold'
+    color: '#022f66',
   }
   
 });
