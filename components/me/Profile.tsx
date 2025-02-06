@@ -62,21 +62,21 @@ const Profile = () => {
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015446.png')} 
-                      style={{ width: 68, height: 68, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>轉賬服務</Text>
                 </View>
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015442.png')} 
-                      style={{ width: 68, height: 68, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>是次交易紀錄</Text>
                 </View>
                 <View style={styles.profileCenterBox}>
                     <Image 
                       source={require('../../assets/images/圖片_20250201015440.png')} 
-                      style={{ width: 68, height: 68, resizeMode: 'contain' }} // Adjust size accordingly
+                      style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
                     />
                     <Text style={styles.myCouponsText}>戶口紀錄</Text>
                 </View>
@@ -113,7 +113,7 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
   profileTop: {
-    height: 190,
+    height: 185,
     paddingHorizontal: 30,
   },
   profileBalance: {
@@ -126,19 +126,19 @@ const styles = StyleSheet.create({
   eyeIcon: { width: 24, height: 24, resizeMode: 'contain' },
   balanceText: {
     fontFamily: 'NotoSansTC-Medium',
-    includeFontPadding: false,
+    lineHeight: 20,
     fontSize: 16,
     color: '#fff',
   },
   balance: {
     color: '#fff',
     fontFamily: 'NotoSansTC-Medium',
-    includeFontPadding: false,
+    lineHeight: 36,
     fontSize: 28,
   },
   account: {
     fontFamily: 'NotoSansTC-Medium',
-    fontWeight: '600',
+    lineHeight: 40,
     fontSize: 14,
     color: '#fff',
   },
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     elevation: 10,
     paddingHorizontal: 0,
-    paddingVertical: 15,
+    paddingVertical: 14,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
@@ -173,11 +173,11 @@ const styles = StyleSheet.create({
   profileBottom: {
     height: '100%',
     paddingHorizontal: 15,
-    marginTop: 20
+    marginTop: 15
   },
   myHkjc: {
     fontFamily: 'NotoSansTC-Medium',
-    includeFontPadding: false,
+    lineHeight: 30,
     fontSize: 20,
     color: '#000',
   },
@@ -188,7 +188,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     elevation: 10,
     marginTop: 10,
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     gap: 10
   },
   iconContainer: {
@@ -201,7 +202,7 @@ const styles = StyleSheet.create({
   },
   myCouponsText: {
     fontFamily: 'NotoSansTC-Medium',
-    includeFontPadding: false,
+    lineHeight: 25,
     fontSize: 18,
     color: '#555'
   },
@@ -223,7 +224,7 @@ const styles = StyleSheet.create({
   },
   suggestionText: {
     fontFamily: 'NotoSansTC-Medium',
-    includeFontPadding: false,
+    lineHeight: 30,
     fontSize: 18,
     color: '#000',
     marginLeft: 10,
@@ -245,11 +246,10 @@ const styles = StyleSheet.create({
   },
   logoutText: {
     fontFamily: 'NotoSansTC-Medium',
-    includeFontPadding: false,
+    lineHeight: 20,
     fontSize: 16,
     color: '#022f66',
   }
-  
 });
 
 export default Profile;
