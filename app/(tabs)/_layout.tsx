@@ -8,10 +8,11 @@ export default function TabLayout() {
     'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
     'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
   });
+
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { backgroundColor: '#022f66' }, 
+        headerStyle: { backgroundColor: '#022f66' },
         headerTintColor: 'white',
         headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
         headerTitleAlign: 'center',
@@ -22,30 +23,31 @@ export default function TabLayout() {
           default: {},
         }),
       }}>
+      {/** Repeat this for each tab */}
       <Tabs.Screen
         name="index"
         options={{
-          tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: () => (
-             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
+          tabBarLabel: "",
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabContainer}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015452.png')} 
-                style={{ width: 22, height: 22, resizeMode: 'contain' }} // Adjust size accordingly
+                style={[styles.icon, focused && styles.focusedTab]} 
               />
               <Text style={styles.tabText}>{'主頁'}</Text>
             </View>
           ),
         }}
-      />;
+      />
       <Tabs.Screen
         name="discover"
         options={{
-          tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: () => (
-             <View style={{ alignItems: 'center', marginTop: 10, width: 80 }}>
+          tabBarLabel: "",
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabContainer}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015432.png')} 
-                style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                style={[styles.icon, focused && styles.focusedTab]} 
               />
               <Text style={styles.tabText}>{'馬上發現'}</Text>
             </View>
@@ -55,12 +57,12 @@ export default function TabLayout() {
       <Tabs.Screen
         name="betslip"
         options={{
-          tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: () => (
-             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
+          tabBarLabel: "",
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabContainer}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015430.png')} 
-                style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                style={[styles.icon, focused && styles.focusedTab]} 
               />
               <Text style={styles.tabText}>{'投注區'}</Text>
             </View>
@@ -70,12 +72,12 @@ export default function TabLayout() {
       <Tabs.Screen
         name="ewallet"
         options={{
-          tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: () => (
-             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
+          tabBarLabel: "",
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabContainer}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015427.png')} 
-                style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                style={[styles.icon, focused && styles.focusedTab]} 
               />
               <Text style={styles.tabText}>{'電子錢包'}</Text>
             </View>
@@ -85,12 +87,12 @@ export default function TabLayout() {
       <Tabs.Screen
         name="more"
         options={{
-          tabBarLabel: "", // Hide default label to prevent duplication
-          tabBarIcon: () => (
-             <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
+          tabBarLabel: "",
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabContainer}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015418.png')} 
-                style={{ width: 28, height: 28, resizeMode: 'contain' }} // Adjust size accordingly
+                style={[styles.icon, focused && styles.focusedTab]} 
               />
               <Text style={styles.tabText}>{'更多'}</Text>
             </View>
@@ -101,17 +103,15 @@ export default function TabLayout() {
         name="me"
         options={{
           title: "我",
-          tabBarLabel: "", // Hide default label
-          tabBarShowLabel: false, // Ensures no default text appears
-          tabBarIcon: () => (
-            <View style={{ alignItems: 'center', marginTop: 10, width: 80}}>
+          tabBarLabel: "",
+          tabBarShowLabel: false,
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabContainer}>
               <Image 
                 source={require('../../assets/images/圖片_20250201015434.png')} 
-                style={{ width: 28, height: 28, resizeMode: 'contain' }} 
+                style={[styles.icon, focused && styles.focusedTab]} 
               />
-              <Text style={styles.tabText}>
-                我
-              </Text>
+              <Text style={styles.tabText}>{'我'}</Text>
             </View>
           ),
         }}
@@ -121,10 +121,24 @@ export default function TabLayout() {
 }
 
 const styles = StyleSheet.create({
+  tabContainer: {
+    alignItems: 'center',
+    marginTop: 10,
+    width: 80,
+  },
+  icon: {
+    width: 60,
+    height: 28,
+    resizeMode: 'contain'
+  },
+  focusedTab: {
+    backgroundColor: '#E1EBEE', // Change to your desired color
+    borderRadius: 20, // Optional: add some rounding for better aesthetics
+  },
   tabText: {
     fontSize: 12,
-    color: 'black', 
-    fontFamily: 'NotoSansTC-Regular', 
-    fontWeight: 'bold'
-  }
-})
+    color: 'black',
+    fontFamily: 'NotoSansTC-Regular',
+    fontWeight: 'bold',
+  },
+});
