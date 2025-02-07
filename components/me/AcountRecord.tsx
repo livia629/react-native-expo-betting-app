@@ -79,7 +79,7 @@ const AcountRecord = () => {
                         <Text style={[styles.dateBtnText, selectedButton === '最近8日' && styles.selectedDateBtnText]}>最近8日</Text>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.boxBtn} onPress={() => router.push('/routers/EditProfile')}>
+                <TouchableOpacity style={styles.boxBtn} onPress={() => router.push('/routers/DatePicker')}>
                     <Text style={styles.boxBtnLeftText}>時段</Text>
                     <Text style={styles.boxBtnRightText}>{dateRange}</Text>
                 </TouchableOpacity>
