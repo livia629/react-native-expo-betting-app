@@ -17,16 +17,24 @@ const Profile = () => {
     'NotoSansTC-Medium': require('../../assets/fonts/NotoSansTC-Medium.ttf'),
   });
   const router = useRouter();
+  const [savedBalance, setSavedBalance] = useState('');
+  const [savedAccount, setSavedAccount] = useState('');
 
   // Load profile data every time the screen is focused
   useFocusEffect(
     useCallback(() => {
       const loadProfileData = async () => {
         try {
-          const savedBalance = await AsyncStorage.getItem('balance');
-          const savedAccount = await AsyncStorage.getItem('account');
-          if (savedBalance) setBalance(`$${savedBalance}`);
-          if (savedAccount) setAccount(`投注戶口號碼: ${savedAccount}`);
+          const balanceFromStorage = await AsyncStorage.getItem('balance');
+          const accountFromStorage = await AsyncStorage.getItem('account');
+          if (balanceFromStorage) {
+            setSavedBalance(balanceFromStorage);
+            setBalance(`$${balanceFromStorage}`);
+          }
+          if (accountFromStorage) {
+            setSavedAccount(accountFromStorage);
+            setAccount(`投注戶口號碼: ${accountFromStorage}`);
+          }
         } catch (error) {
           console.error('Failed to load data', error);
         }
@@ -34,6 +42,26 @@ const Profile = () => {
       loadProfileData();
     }, [])
   );
+  const handleAccountRecordPress = () => {
+    const currentTime = new Date().toLocaleString('en-HK', {
+      timeZone: 'Asia/Hong_Kong',
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false // Use 24-hour format
+    });
+    const formattedTime = currentTime.replace(/\/0/g, '/').replace(/, /g, ' ').replace(/:/g, ':').trim();
+    router.push({
+      pathname: '/routers/AcountRecord',
+      params: {
+        currentTime: formattedTime,
+        account: savedAccount,
+        balance: savedBalance,
+      },
+    });
+  };
 
   return (
     <>
@@ -59,27 +87,27 @@ const Profile = () => {
         </ImageBackground>
         <View style={styles.profileCenter}>
             <View style={styles.profileCenterDiv}>
-                <View style={styles.profileCenterBox}>
-                    <Image 
-                      source={require('../../assets/images/圖片_20250201015446.png')} 
-                      style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
-                    />
-                    <Text style={styles.myCouponsText}>轉賬服務</Text>
-                </View>
-                <View style={styles.profileCenterBox}>
-                    <Image 
-                      source={require('../../assets/images/圖片_20250201015442.png')} 
-                      style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
-                    />
-                    <Text style={styles.myCouponsText}>是次交易紀錄</Text>
-                </View>
-                <View style={styles.profileCenterBox}>
-                    <Image 
-                      source={require('../../assets/images/圖片_20250201015440.png')} 
-                      style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
-                    />
-                    <Text style={styles.myCouponsText}>戶口紀錄</Text>
-                </View>
+                <TouchableOpacity style={styles.profileCenterBox}>
+                  <Image 
+                    source={require('../../assets/images/圖片_20250201015446.png')} 
+                    style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
+                  />
+                  <Text style={styles.myCouponsText}>轉賬服務</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.profileCenterBox}>
+                  <Image 
+                    source={require('../../assets/images/圖片_20250201015442.png')} 
+                    style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
+                  />
+                  <Text style={styles.myCouponsText}>是次交易紀錄</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.profileCenterBox} onPress={handleAccountRecordPress}>
+                  <Image 
+                    source={require('../../assets/images/圖片_20250201015440.png')} 
+                    style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
+                  />
+                  <Text style={styles.myCouponsText}>戶口紀錄</Text>
+                </TouchableOpacity>
             </View>
         </View>
         <View style={styles.profileBottom}>
