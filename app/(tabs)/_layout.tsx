@@ -17,108 +17,40 @@ export default function TabLayout() {
         headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
         headerTitleAlign: 'center',
         tabBarStyle: Platform.select({
-          ios: {
-            position: 'absolute',
-          },
+          ios: { position: 'absolute' },
           default: {},
         }),
-      }}>
-      {/** Repeat this for each tab */}
-      <Tabs.Screen
-        name="index"
-        options={{
-          tabBarLabel: "",
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image 
-                source={require('../../assets/images/圖片_20250201015452.png')} 
-                style={[styles.icon, focused && styles.focusedTab]} 
-              />
-              <Text style={styles.tabText}>{'主頁'}</Text>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="discover"
-        options={{
-          tabBarLabel: "",
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image 
-                source={require('../../assets/images/圖片_20250201015432.png')} 
-                style={[styles.icon, focused && styles.focusedTab]} 
-              />
-              <Text style={styles.tabText}>{'馬上發現'}</Text>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="betslip"
-        options={{
-          tabBarLabel: "",
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image 
-                source={require('../../assets/images/圖片_20250201015430.png')} 
-                style={[styles.icon, focused && styles.focusedTab]} 
-              />
-              <Text style={styles.tabText}>{'投注區'}</Text>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="ewallet"
-        options={{
-          tabBarLabel: "",
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image 
-                source={require('../../assets/images/圖片_20250201015427.png')} 
-                style={[styles.icon, focused && styles.focusedTab]} 
-              />
-              <Text style={styles.tabText}>{'電子錢包'}</Text>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="more"
-        options={{
-          tabBarLabel: "",
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image 
-                source={require('../../assets/images/圖片_20250201015418.png')} 
-                style={[styles.icon, focused && styles.focusedTab]} 
-              />
-              <Text style={styles.tabText}>{'更多'}</Text>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="me"
-        options={{
-          title: "我",
-          tabBarLabel: "",
-          tabBarShowLabel: false,
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image 
-                source={require('../../assets/images/圖片_20250201015434.png')} 
-                style={[styles.icon, focused && styles.focusedTab]} 
-              />
-              <Text style={styles.tabText}>{'我'}</Text>
-            </View>
-          ),
-        }}
-      />
+      }}
+    >
+      <Tabs.Screen name="index" options={tabOptions('圖片_20250201015452.png', '主頁')} />
+      <Tabs.Screen name="discover" options={tabOptions('圖片_20250201015432.png', '馬上發現')} />
+      <Tabs.Screen name="betslip" options={tabOptions('圖片_20250201015430.png', '投注區')} />
+      <Tabs.Screen name="ewallet" options={tabOptions('圖片_20250201015427.png', '電子錢包')} />
+      <Tabs.Screen name="more" options={tabOptions('圖片_20250201015418.png', '更多')} />
+      <Tabs.Screen name="me" options={tabOptions('圖片_20250201015434.png', '我')} />
     </Tabs>
   );
 }
+
+
+const imageMap: { [key: string]: any } = {
+  '圖片_20250201015452.png': require('../../assets/images/圖片_20250201015452.png'),
+  '圖片_20250201015432.png': require('../../assets/images/圖片_20250201015432.png'),
+  '圖片_20250201015430.png': require('../../assets/images/圖片_20250201015430.png'),
+  '圖片_20250201015427.png': require('../../assets/images/圖片_20250201015427.png'),
+  '圖片_20250201015418.png': require('../../assets/images/圖片_20250201015418.png'),
+  '圖片_20250201015434.png': require('../../assets/images/圖片_20250201015434.png'),
+};
+
+const tabOptions = (imagePath: string, label: string) => ({
+  tabBarLabel: "",
+  tabBarIcon: ({ focused }: { focused: boolean }) => (
+    <View style={styles.tabContainer}>
+      <Image source={imageMap[imagePath]} style={[styles.icon, focused && styles.focusedTab]} />
+      <Text style={styles.tabText}>{label}</Text>
+    </View>
+  ),
+});
 
 const styles = StyleSheet.create({
   tabContainer: {
@@ -129,11 +61,11 @@ const styles = StyleSheet.create({
   icon: {
     width: 60,
     height: 28,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
   },
   focusedTab: {
-    backgroundColor: '#E1EBEE', // Change to your desired color
-    borderRadius: 20, // Optional: add some rounding for better aesthetics
+    backgroundColor: '#E1EBEE',
+    borderRadius: 20,
   },
   tabText: {
     fontSize: 12,

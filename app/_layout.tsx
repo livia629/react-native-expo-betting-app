@@ -48,7 +48,7 @@ export default function RootLayout() {
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="routers/EditProfile" options={{ title: '意見/建議' }} />
-        <Stack.Screen name="routers/AcountRecord" options={{ title: '户口紀錄' }} />
+        <Stack.Screen name="routers/AccountRecord" options={{ title: '户口紀錄' }} />
         <Stack.Screen name="routers/DatePicker" options={{ title: '搜尋時段' }} />
         <Stack.Screen name="+not-found" />
       </Stack>
