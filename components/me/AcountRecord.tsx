@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
@@ -102,6 +102,41 @@ const AcountRecord = () => {
         updateDateRange(button);
     };
 
+    const acountDatas = [
+        [
+            { key: '參考編號', value: '-' },
+            { key: '日期 / 時間', value: '-' },
+            { key: '投注類別', value: '-' },
+            { key: '細節', value: '2025年2月1日03:11 之戶口結餘: $54.60' },
+            { key: '支出', value: '-' },
+            { key: '存入', value: '-' },
+        ],
+        [
+            { key: '參考編號', value: '5447' },
+            { key: '日期 / 時間', value: '01-02-2025 03:11' },
+            { key: '投注類別', value: '六合彩' },
+            { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
+            { key: '支出', value: '$10.00' },
+            { key: '存入', value: '-' },
+        ],
+        [
+            { key: '參考編號', value: '5448' },
+            { key: '日期 / 時間', value: '01-02-2025 03:11' },
+            { key: '投注類別', value: '六合彩' },
+            { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
+            { key: '支出', value: '$10.00' },
+            { key: '存入', value: '-' },
+        ],
+        [
+            { key: '參考編號', value: '5449' },
+            { key: '日期 / 時間', value: '01-02-2025 03:11' },
+            { key: '投注類別', value: '六合彩' },
+            { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
+            { key: '支出', value: '$10.00' },
+            { key: '存入', value: '-' },
+        ],
+    ]
+
     return (
         <>
             <View style={styles.topContainer}>
@@ -148,39 +183,21 @@ const AcountRecord = () => {
                         <Text style={styles.text}>搜尋時段: {dateRange.replace('-', ' 至 ')}</Text>
                     </View>
                     <View style={styles.comContent}>
-                        <View style={styles.container}>
-                            {/* Header Row */}
-                            <View style={[styles.row, styles.headerRow]}>
-                                <Text style={styles.headerText}>參考編號</Text>
-                                <Text style={styles.headerText}>-</Text>
-                            </View>
-
-                            {/* Table Rows */}
-                            <View style={styles.row}>
-                                <Text style={styles.cellText}>日期 / 時間</Text>
-                                <Text style={styles.cellText}>-</Text>
-                            </View>
-                            <View style={styles.row}>
-                                <Text style={styles.cellText}>投注類別</Text>
-                                <Text style={styles.cellText}>-</Text>
-                            </View>
-                            <View style={styles.row}>
-                                <Text style={styles.cellText}>細節</Text>
-                                <Text style={styles.cellText}>2025年2月1日03:11 之戶口結餘: $54.60</Text>
-                            </View>
-                            <View style={styles.row}>
-                                <Text style={styles.cellText}>支出</Text>
-                                <Text style={styles.cellText}>-</Text>
-                            </View>
-                            <View style={styles.row}>
-                                <Text style={styles.cellText}>存入</Text>
-                                <Text style={styles.cellText}>-</Text>
-                            </View>
-                        </View>
+                        <ScrollView contentContainerStyle={{ paddingBottom: 120 }}>
+                            {acountDatas.map((acountdata, index) => (
+                                <View key={index} style={styles.tableContainer}>
+                                    {acountdata.map((row, rowIndex) => (
+                                    <View key={rowIndex} style={[styles.row, rowIndex === 0 && styles.headerRow]}>
+                                        <Text style={rowIndex === 0 ? styles.headerText : styles.cellText}>{row.key}</Text>
+                                        <Text style={rowIndex === 0 ? styles.headerValueText : styles.cellValueText}>{row.value}</Text>
+                                    </View>
+                                    ))}
+                                </View>
+                            ))}
+                        </ScrollView>
                     </View>
                 </>
             )}
-            
         </>
     );
 };
@@ -204,38 +221,14 @@ const styles = StyleSheet.create({
     backBtn: { flexDirection: 'row', alignItems: "center", },
     backText: { color: 'white' },
     comDescriptionBox: {backgroundColor: "#F6F6F6", paddingHorizontal: 15, paddingVertical: 8, borderBottomColor: '#ddd', borderBottomWidth: 3},
-    comContent: {backgroundColor: 'eee', paddingHorizontal: 15,},
-    container: {
-        backgroundColor: '#F0F0F0', // Light gray background
-        borderRadius: 10,
-        overflow: 'hidden',
-        width: '100%',
-        maxWidth: 380, // Adjust for responsiveness
-        alignSelf: 'center',
-        borderWidth: 1,
-        borderColor: '#ddd',
-    },
-    row: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingVertical: 10,
-        paddingHorizontal: 15,
-        backgroundColor: '#fff',
-        borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
-    },
-    headerRow: {
-        backgroundColor: '#999', // Gray header
-    },
-    headerText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: 'white',
-    },
-    cellText: {
-        fontSize: 14,
-        color: '#333',
-    },
+    comContent: {backgroundColor: 'eee', paddingHorizontal: 15, paddingVertical: 10, },
+    tableContainer: { marginBottom: 10, backgroundColor: '#F0F0F0', borderRadius: 10, overflow: 'hidden', width: '100%', maxWidth: 380, alignSelf: 'center', borderWidth: 1, borderColor: '#ddd' },
+    row: { flexDirection: 'row', paddingVertical: 10, paddingHorizontal: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#ddd' },
+    headerRow: { backgroundColor: '#999' },
+    headerText: { width: 130, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'white' },
+    headerValueText: { flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'white' },
+    cellText: { width: 130, borderRightColor: '#ddd', borderRightWidth: 1, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
+    cellValueText: { flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
 });
 
 export default AcountRecord;
