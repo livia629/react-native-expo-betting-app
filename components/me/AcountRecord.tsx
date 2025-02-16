@@ -44,7 +44,7 @@ const AcountRecord = () => {
             navigation.setOptions({
                 headerLeft: () => (
                     <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-                        <MaterialIcons name="chevron-left" size={18} color="white" />
+                        <MaterialIcons name="chevron-left" size={18} color="white" style={{marginTop: 5}} />
                         <Text style={styles.backText}>返回</Text>
                     </TouchableOpacity>
                 ),
@@ -59,6 +59,14 @@ const AcountRecord = () => {
         const month = (date.getMonth() + 1).toString().padStart(2, '0');  // Ensures 2-digit month
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
+    };
+
+    // Function to format current time as "DD-MM-YYYY HH:mm"
+    const formatCurrentTime = (currentTime: string) => {
+        const [datePart, timePart] = currentTime.split(' '); // Separate date and time
+        const [day, month, year] = datePart.split('/').map(num => num.padStart(2, '0')); // Ensure 2-digit format
+
+        return `${day}-${month}-${year} ${timePart}`;
     };
 
     // Function to update date range based on button selection
@@ -140,7 +148,7 @@ const AcountRecord = () => {
     return (
         <>
             <View style={styles.topContainer}>
-                <Text style={styles.text}>時間: {currentTime}</Text>
+                <Text style={styles.text}>時間: {formatCurrentTime(currentTime)}</Text>
                 <Text style={styles.text}>投注戶口號碼: {account}</Text>
                 <Text style={styles.text}>結餘: ${balance}</Text>
             </View>
@@ -190,6 +198,14 @@ const AcountRecord = () => {
                                     <View key={rowIndex} style={[styles.row, rowIndex === 0 && styles.headerRow]}>
                                         <Text style={rowIndex === 0 ? styles.headerText : styles.cellText}>{row.key}</Text>
                                         <Text style={rowIndex === 0 ? styles.headerValueText : styles.cellValueText}>{row.value}</Text>
+                                        {row.key === "參考編號" && row.value != "-" ?(
+                                            <TouchableOpacity style={styles.shareButton}>
+                                                <MaterialIcons name="share" size={18} color="black" style={styles.shareIcon} />
+                                                <Text style={styles.shareText}>分享注項</Text>
+                                            </TouchableOpacity>
+                                        ):(
+                                            ""
+                                        )}
                                     </View>
                                     ))}
                                 </View>
@@ -205,30 +221,53 @@ const AcountRecord = () => {
 const styles = StyleSheet.create({
     topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 10,  },
     text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: 'black' },
-    bottomContainer: { backgroundColor: '#eee', paddingHorizontal: 15, paddingVertical: 10, borderTopColor: '#ddd', borderTopWidth: 3 },
-    dateBtns: { flexDirection: 'row', alignItems: 'center', marginVertical: 15, gap: 10 },
-    dateBtn: { borderColor: '#022f66', borderWidth: 2, borderRadius: 20, paddingHorizontal: 15, paddingVertical: 5 },
+    bottomContainer: { backgroundColor: '#eee', paddingHorizontal: 15, paddingVertical: 8, borderTopColor: '#ccc', borderTopWidth: 2,  },
+    dateBtns: { flexDirection: 'row', alignItems: 'center', marginTop: 10, marginBottom: 15, gap: 10 },
+    dateBtn: { borderColor: '#022f66', borderWidth: 2, borderRadius: 20, paddingHorizontal: 15, paddingVertical: 3 },
     dateBtnText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 15, color: '#022f66' },
     selectedDateBtn: { backgroundColor: '#022f66' },
     selectedDateBtnText: { color: 'white' },
-    boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 10, paddingHorizontal: 15, borderColor: '#aaa', borderWidth: 2, borderRadius: 5 },
+    boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', paddingVertical: 10, paddingHorizontal: 15, borderColor: '#aaa', borderWidth: 2, borderRadius: 5 },
     boxBtnLeftText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontSize: 18, color: 'black' },
     boxBtnRightText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontWeight: 'bold', fontSize: 18, color: 'black' },
-    horizonLine: { borderBottomWidth: 1, borderColor: "#ccc", height: 20, marginBottom: 20 },
+    horizonLine: { borderBottomWidth: 1, borderColor: "#ccc", height: 25, marginBottom: 25 },
     send: { width: '100%', backgroundColor: '#022f66', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
     sendText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#fff' },
-    completeBtnText: { fontFamily: 'NotoSansTC-Medium', fontSize: 14, color: 'white' },
+    completeBtnText: { fontFamily: 'NotoSansTC-Medium', fontSize: 14, color: 'white', fontWeight: 'bold', marginTop: 5 },
     backBtn: { flexDirection: 'row', alignItems: "center", },
-    backText: { color: 'white' },
-    comDescriptionBox: {backgroundColor: "#F6F6F6", paddingHorizontal: 15, paddingVertical: 8, borderBottomColor: '#ddd', borderBottomWidth: 3},
+    backText: { color: 'white', fontWeight: 'bold', marginTop: 5 },
+    comDescriptionBox: {backgroundColor: "#F6F6F6", paddingHorizontal: 15, paddingVertical: 8, borderBottomColor: '#ccc', borderBottomWidth: 2},
     comContent: {backgroundColor: 'eee', paddingHorizontal: 15, paddingVertical: 10, },
     tableContainer: { marginBottom: 10, backgroundColor: '#F0F0F0', borderRadius: 10, overflow: 'hidden', width: '100%', maxWidth: 380, alignSelf: 'center', borderWidth: 1, borderColor: '#ddd' },
-    row: { flexDirection: 'row', paddingVertical: 10, paddingHorizontal: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#ddd' },
-    headerRow: { backgroundColor: '#999' },
-    headerText: { width: 130, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'white' },
-    headerValueText: { flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'white' },
-    cellText: { width: 130, borderRightColor: '#ddd', borderRightWidth: 1, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
-    cellValueText: { flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
+    row: { flexDirection: 'row', paddingHorizontal: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#ddd' },
+    headerRow: { backgroundColor: '#888', height: 45, paddingVertical: 5, verticalAlign: 'middle' },
+    headerText: { width: 130, fontFamily: 'NotoSansTC-Medium', fontWeight: '600', lineHeight: 42, fontSize: 17, color: 'white' },
+    headerValueText: { flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 40, fontSize: 16, color: 'white' },
+    cellText: { paddingVertical: 10, width: 130, borderRightColor: '#ddd', borderRightWidth: 1, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
+    cellValueText: { paddingVertical: 10, flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
+    shareButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#FFD700', // Gold/yellow color
+        borderRadius: 20,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3, // For Android shadow
+    },
+    shareIcon: {
+        marginRight: 5,
+    },
+    shareText: {
+        fontFamily: 'NotoSansTC-Medium',
+        fontSize: 16,
+        color: 'black',
+        fontWeight: '600',
+        includeFontPadding: false
+    },
 });
 
 export default AcountRecord;

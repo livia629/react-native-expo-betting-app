@@ -50,14 +50,29 @@ export default function App() {
                 allowRangeSelection={true}
                 allowBackwardRangeSelect={true} // Allows selecting end date before start date
                 showDayStragglers={true} // Ensures previous month's days are clickable
+                todayBackgroundColor="#022f66"
                 selectedDayColor="#022f66"
                 selectedDayTextColor="#fff"
                 selectedDayStyle={styles.selectedDay} // Apply custom circle styling
                 minDate={new Date(2000, 0, 1)} // Ensure old dates are allowed
                 maxDate={today} // Prevents future dates
-                textStyle={{ color: '#000' }}
                 previousTitle="<"
                 nextTitle=">"
+                textStyle={{
+                    color: '#000',
+                    fontSize: 20, 
+                    fontWeight: '500',
+                }}
+                disabledDatesTextStyle={{
+                    color: '#bbb',
+                    fontSize: 20, 
+                    fontWeight: '500',
+                }}
+                weekdays={['日', '一', '二', '三', '四', '五', '六']}
+                // months={[
+                //     '一月', '二月', '三月', '四月', '五月', '六月',
+                //     '七月', '八月', '九月', '十月', '十一月', '十二月'
+                // ]}
                 onDateChange={(date: Date, type: string) => {
                     if (type === 'START_DATE') {
                         setSelectedStartDate(date);
@@ -99,12 +114,12 @@ const styles = StyleSheet.create({
     topText:{ marginBottom: 30 },
     dateText: {
         fontFamily: 'NotoSansTC-Medium',
-        lineHeight: 22,
-        fontSize: 20,
+        lineHeight: 24,
+        fontSize: 22,
         fontWeight: 'bold',
         color: '#022f66',
     },
-    introText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: 'black', },
+    introText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: 'black', marginTop: 5 },
     selectedDay: {
         backgroundColor: '#022f66',
         borderRadius: 50,

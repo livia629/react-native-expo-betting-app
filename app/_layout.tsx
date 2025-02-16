@@ -34,13 +34,13 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: '#022f66' },
+          headerStyle: { backgroundColor: '#022f66', },
           headerTintColor: 'white',
           headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
           headerTitleAlign: 'center',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()} style={ styles.backBtn }>
-              <MaterialIcons name="chevron-left" size={18} color="white" />
+              <MaterialIcons name="chevron-left" size={18} color="white" style={{marginTop: 5}} />
               <Text style={styles.backText}>返回</Text>
             </TouchableOpacity>
           ),
@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   backText: {
-    color: 'white'
+    color: 'white',
+    fontWeight: 'bold',
+    marginTop: 5
   }
 })
