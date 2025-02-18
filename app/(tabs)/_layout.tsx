@@ -7,14 +7,17 @@ export default function TabLayout() {
   const [fontsLoaded] = useFonts({
     'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
     'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
+    'NotoSansTC-Medium': require('../../assets/fonts/NotoSansTC-Medium.ttf'),
   });
+
+  if (!fontsLoaded) return null; // Prevent rendering before fonts are loaded
 
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { backgroundColor: '#022f66' },
+        headerStyle: { backgroundColor: '#022f77' },
         headerTintColor: 'white',
-        headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+        headerTitleStyle: { fontSize: 18, fontFamily: 'NotoSansTC-Bold' }, // ✅ Fixed header font
         headerTitleAlign: 'center',
         tabBarStyle: Platform.select({
           ios: { position: 'absolute' },
@@ -22,16 +25,15 @@ export default function TabLayout() {
         }),
       }}
     >
-      <Tabs.Screen name="index" options={tabOptions('圖片_20250201015452.png', '主頁')} />
-      <Tabs.Screen name="discover" options={tabOptions('圖片_20250201015432.png', '馬上發現')} />
-      <Tabs.Screen name="betslip" options={tabOptions('圖片_20250201015430.png', '投注區')} />
-      <Tabs.Screen name="ewallet" options={tabOptions('圖片_20250201015427.png', '電子錢包')} />
-      <Tabs.Screen name="more" options={tabOptions('圖片_20250201015418.png', '更多')} />
-      <Tabs.Screen name="me" options={tabOptions('圖片_20250201015434.png', '我')} />
+      <Tabs.Screen name="index" options={{ ...tabOptions('圖片_20250201015452.png', '主頁'), title: '主頁' }} />
+      <Tabs.Screen name="discover" options={{ ...tabOptions('圖片_20250201015432.png', '馬上發現'), title: '馬上發現' }} />
+      <Tabs.Screen name="betslip" options={{ ...tabOptions('圖片_20250201015430.png', '投注區'), title: '投注區' }} />
+      <Tabs.Screen name="ewallet" options={{ ...tabOptions('圖片_20250201015427.png', '電子錢包'), title: '電子錢包' }} />
+      <Tabs.Screen name="more" options={{ ...tabOptions('圖片_20250201015418.png', '更多'), title: '更多' }} />
+      <Tabs.Screen name="me" options={{ ...tabOptions('圖片_20250201015434.png', '我'), title: '我' }} />
     </Tabs>
   );
 }
-
 
 const imageMap: { [key: string]: any } = {
   '圖片_20250201015452.png': require('../../assets/images/圖片_20250201015452.png'),
@@ -74,4 +76,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-

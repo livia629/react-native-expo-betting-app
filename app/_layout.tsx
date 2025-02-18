@@ -20,6 +20,12 @@ export default function RootLayout() {
   });
   const navigation = useNavigation();
 
+  const [fontsLoaded] = useFonts({
+      'NotoSansTC-Regular': require('../assets/fonts/NotoSansTC-Regular.ttf'),
+      'NotoSansTC-Bold': require('../assets/fonts/NotoSansTC-Bold.ttf'),
+      'NotoSansTC-Medium': require('../assets/fonts/NotoSansTC-Medium.ttf'),
+  });
+
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -34,7 +40,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: '#022f66', },
+          headerStyle: { backgroundColor: '#022f77', },
           headerTintColor: 'white',
           headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
           headerTitleAlign: 'center',
@@ -47,9 +53,9 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="routers/EditProfile" options={{ title: '意見/建議' }} />
-        <Stack.Screen name="routers/AcountRecord" options={{ title: '户口紀錄' }} />
-        <Stack.Screen name="routers/DatePicker" options={{ title: '搜尋時段' }} />
+        <Stack.Screen name="routers/EditProfile" options={{ title: '意見/建議', headerTitleStyle: {fontFamily: 'NotoSansTC-Medium', fontWeight: 'bold'} }} />
+        <Stack.Screen name="routers/AcountRecord" options={{ title: '户口紀錄', headerTitleStyle: {fontFamily: 'NotoSansTC-Medium', fontWeight: 'bold'} }} />
+        <Stack.Screen name="routers/DatePicker" options={{ title: '搜尋時段', headerTitleStyle: {fontFamily: 'NotoSansTC-Medium', fontWeight: 'bold'} }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

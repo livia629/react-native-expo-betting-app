@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Modal, TextInput } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
@@ -110,7 +110,52 @@ const AcountRecord = () => {
         updateDateRange(button);
     };
 
-    const acountDatas = [
+    // const acountDatas = [
+    //     [
+    //         { key: '參考編號', value: '-' },
+    //         { key: '日期 / 時間', value: '-' },
+    //         { key: '投注類別', value: '-' },
+    //         { key: '細節', value: '2025年2月1日03:11 之戶口結餘: $54.60' },
+    //         { key: '支出', value: '-' },
+    //         { key: '存入', value: '-' },
+    //     ],
+    //     [
+    //         { key: '參考編號', value: '5447' },
+    //         { key: '日期 / 時間', value: '01-02-2025 03:11' },
+    //         { key: '投注類別', value: '六合彩' },
+    //         { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
+    //         { key: '支出', value: '$10.00' },
+    //         { key: '存入', value: '-' },
+    //     ],
+    //     [
+    //         { key: '參考編號', value: '5448' },
+    //         { key: '日期 / 時間', value: '01-02-2025 03:11' },
+    //         { key: '投注類別', value: '六合彩' },
+    //         { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
+    //         { key: '支出', value: '$10.00' },
+    //         { key: '存入', value: '-' },
+    //     ],
+    //     [
+    //         { key: '參考編號', value: '5449' },
+    //         { key: '日期 / 時間', value: '01-02-2025 03:11' },
+    //         { key: '投注類別', value: '六合彩' },
+    //         { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
+    //         { key: '支出', value: '$10.00' },
+    //         { key: '存入', value: '-' },
+    //     ],
+    // ]
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [newRecord, setNewRecord] = useState({
+        參考編號: '',
+        日期時間: '',
+        投注類別: '',
+        細節: '',
+        支出: '',
+        存入: '',
+    });
+
+    const [acountDatas, setAcountDatas] = useState([
         [
             { key: '參考編號', value: '-' },
             { key: '日期 / 時間', value: '-' },
@@ -119,31 +164,22 @@ const AcountRecord = () => {
             { key: '支出', value: '-' },
             { key: '存入', value: '-' },
         ],
-        [
-            { key: '參考編號', value: '5447' },
-            { key: '日期 / 時間', value: '01-02-2025 03:11' },
-            { key: '投注類別', value: '六合彩' },
-            { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
-            { key: '支出', value: '$10.00' },
-            { key: '存入', value: '-' },
-        ],
-        [
-            { key: '參考編號', value: '5448' },
-            { key: '日期 / 時間', value: '01-02-2025 03:11' },
-            { key: '投注類別', value: '六合彩' },
-            { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
-            { key: '支出', value: '$10.00' },
-            { key: '存入', value: '-' },
-        ],
-        [
-            { key: '參考編號', value: '5449' },
-            { key: '日期 / 時間', value: '01-02-2025 03:11' },
-            { key: '投注類別', value: '六合彩' },
-            { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
-            { key: '支出', value: '$10.00' },
-            { key: '存入', value: '-' },
-        ],
-    ]
+    ]);
+
+    const handleAddRecord = () => {
+        const newEntry = [
+            { key: '參考編號', value: newRecord.參考編號 || '-' },
+            { key: '日期 / 時間', value: newRecord.日期時間 || '-' },
+            { key: '投注類別', value: newRecord.投注類別 || '-' },
+            { key: '細節', value: newRecord.細節 || '-' },
+            { key: '支出', value: newRecord.支出 || '-' },
+            { key: '存入', value: newRecord.存入 || '-' },
+        ];
+
+        setAcountDatas([...acountDatas, newEntry]);
+        setIsModalVisible(false); // Close modal
+        setNewRecord({ 參考編號: '', 日期時間: '', 投注類別: '', 細節: '', 支出: '', 存入: '' }); // Reset form
+    };
 
     return (
         <>
@@ -154,7 +190,7 @@ const AcountRecord = () => {
             </View>
             {!isCompleteScreen ? (
                 <View style={styles.bottomContainer}>
-                    <Text style={styles.text}>每次最多可以搜尋過去30天內其中8天。 (以香港時間計算）</Text>
+                    <Text style={styles.destext}>每次最多可以搜尋過去30天內其中8天。 (以香港時間計算）</Text>
                     <View style={styles.dateBtns}>
                         {['今日', '最近2日', '最近8日'].map((button) => (
                             <TouchableOpacity
@@ -190,6 +226,9 @@ const AcountRecord = () => {
                     <View style={styles.comDescriptionBox}>
                         <Text style={styles.text}>搜尋時段: {dateRange.replace('-', ' 至 ')}</Text>
                     </View>
+                    <TouchableOpacity style={styles.addButton} onPress={() => setIsModalVisible(true)}>
+                        <MaterialIcons name="add" size={24} color="white" />
+                    </TouchableOpacity>
                     <View style={styles.comContent}>
                         <ScrollView contentContainerStyle={{ paddingBottom: 120 }}>
                             {acountDatas.map((acountdata, index) => (
@@ -211,6 +250,30 @@ const AcountRecord = () => {
                                 </View>
                             ))}
                         </ScrollView>
+                        <Modal visible={isModalVisible} transparent={true} animationType="slide">
+                            <View style={styles.modalContainer}>
+                                <View style={styles.modalContent}>
+                                    <Text style={styles.modalTitle}>新增記錄</Text>
+                                    {Object.keys(newRecord).map((key, index) => (
+                                        <TextInput
+                                            key={index}
+                                            style={styles.input}
+                                            placeholder={key}
+                                            value={newRecord[key as keyof typeof newRecord]}
+                                            onChangeText={(text) => setNewRecord({ ...newRecord, [key]: text })}
+                                        />
+                                    ))}
+                                    <View style={styles.modalButtons}>
+                                        <TouchableOpacity style={styles.modalButton} onPress={() => setIsModalVisible(false)}>
+                                            <Text style={styles.modalButtonText}>取消</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalButton} onPress={handleAddRecord}>
+                                            <Text style={styles.modalButtonText}>確定</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                            </View>
+                        </Modal>
                     </View>
                 </>
             )}
@@ -221,17 +284,18 @@ const AcountRecord = () => {
 const styles = StyleSheet.create({
     topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 10,  },
     text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: 'black' },
+    destext: { fontFamily: 'NotoSansTC-Regular', lineHeight: 20, fontSize: 14, color: 'black' },
     bottomContainer: { backgroundColor: '#eee', paddingHorizontal: 15, paddingVertical: 8, borderTopColor: '#ccc', borderTopWidth: 2,  },
     dateBtns: { flexDirection: 'row', alignItems: 'center', marginTop: 10, marginBottom: 15, gap: 10 },
-    dateBtn: { borderColor: '#022f66', borderWidth: 2, borderRadius: 20, paddingHorizontal: 15, paddingVertical: 3 },
-    dateBtnText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 15, color: '#022f66' },
-    selectedDateBtn: { backgroundColor: '#022f66' },
+    dateBtn: { borderColor: '#022f77', borderWidth: 2, borderRadius: 20, paddingHorizontal: 15, paddingVertical: 3 },
+    dateBtnText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 15, color: '#022f77' },
+    selectedDateBtn: { backgroundColor: '#022f77' },
     selectedDateBtnText: { color: 'white' },
-    boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', paddingVertical: 10, paddingHorizontal: 15, borderColor: '#aaa', borderWidth: 2, borderRadius: 5 },
+    boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', paddingVertical: 10, paddingHorizontal: 15, borderColor: '#888', borderWidth: 1.3, borderRadius: 5 },
     boxBtnLeftText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontSize: 18, color: 'black' },
     boxBtnRightText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontWeight: 'bold', fontSize: 18, color: 'black' },
-    horizonLine: { borderBottomWidth: 1, borderColor: "#ccc", height: 25, marginBottom: 25 },
-    send: { width: '100%', backgroundColor: '#022f66', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
+    horizonLine: { borderBottomWidth: 1, borderColor: "#888", height: 25, marginBottom: 25 },
+    send: { width: '100%', backgroundColor: '#022f77', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
     sendText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#fff' },
     completeBtnText: { fontFamily: 'NotoSansTC-Medium', fontSize: 14, color: 'white', fontWeight: 'bold', marginTop: 5 },
     backBtn: { flexDirection: 'row', alignItems: "center", },
@@ -268,6 +332,24 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         includeFontPadding: false
     },
+    addButton: {
+        position: 'absolute',
+        right: 20,
+        top: 20,
+        backgroundColor: '#022f77',
+        padding: 10,
+        borderRadius: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 10,
+    },
+    modalContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' },
+    modalContent: { width: 300, backgroundColor: 'white', padding: 20, borderRadius: 10 },
+    modalTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
+    input: { borderWidth: 1, borderColor: '#ddd', padding: 10, marginBottom: 10, borderRadius: 5 },
+    modalButtons: { flexDirection: 'row', justifyContent: 'space-between' },
+    modalButton: { padding: 10, backgroundColor: '#022f77', borderRadius: 5 },
+    modalButtonText: { color: 'white' },
 });
 
 export default AcountRecord;

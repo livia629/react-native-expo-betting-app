@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
     fontFamily: 'NotoSansTC-Medium',
     lineHeight: 20,
     fontSize: 16,
-    color: '#022f66',
+    color: '#022f77',
   }
 });
 
