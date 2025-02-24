@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Modal, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Modal, TextInput, Image } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import Svg, { Circle, Line } from 'react-native-svg';
+import { Tabs } from 'expo-router';
 
 type RouteParams = {
     currentTime: string;
@@ -147,8 +148,27 @@ const AcountRecord = () => {
         setNewRecord({ 參考編號: '', 日期時間: '', 投注類別: '', 細節: '', 支出: '', 存入: '' }); // Reset form
     };
 
+    const imageMap: { [key: string]: any } = {
+      '圖片_20250201015452.png': require('../../assets/images/圖片_20250201015452.png'),
+      '圖片_20250201015432.png': require('../../assets/images/圖片_20250201015432.png'),
+      '圖片_20250201015430.png': require('../../assets/images/圖片_20250201015430.png'),
+      '圖片_20250201015427.png': require('../../assets/images/圖片_20250201015427.png'),
+      '圖片_20250201015418.png': require('../../assets/images/圖片_20250201015418.png'),
+      '圖片_20250201015434.png': require('../../assets/images/圖片_20250201015434.png'),
+    };
+    
+    const tabOptions = (imagePath: string, label: string) => ({
+      tabBarLabel: "",
+      tabBarIcon: ({ focused }: { focused: boolean }) => (
+        <View style={styles.tabContainer}>
+          <Image source={imageMap[imagePath]} style={[styles.icon, focused && styles.focusedTab]} />
+          <Text style={styles.tabText}>{label}</Text>
+        </View>
+      ),
+    });
+
     return (
-        <>
+        <View style={styles.entireContainer}>
             <View style={styles.headerTop}></View>
             <View style={styles.topContainer}>
                 <Text style={styles.text}>時間: {formatCurrentTime(currentTime)}</Text>
@@ -197,7 +217,7 @@ const AcountRecord = () => {
                         <MaterialIcons name="add" size={20} color="#022f77" />
                     </TouchableOpacity>
                     <View style={styles.comContent}>
-                        <ScrollView contentContainerStyle={{ paddingBottom: 120 }}>
+                        <ScrollView contentContainerStyle={{ paddingBottom: 180 }}>
                             {acountDatas.map((acountdata, index) => (
                                 <View key={index} style={styles.tableContainer}>
                                     {acountdata.map((row, rowIndex) => (
@@ -255,13 +275,27 @@ const AcountRecord = () => {
                             </View>
                         </Modal>
                     </View>
+                    
+
                 </>
             )}
-        </>
+
+            <View style={styles.bottomTabs}>
+                <View style={styles.bottomTabAlign}>
+                    <TouchableOpacity>{tabOptions('圖片_20250201015452.png', '主頁').tabBarIcon({ focused: false })}</TouchableOpacity>
+                    <TouchableOpacity>{tabOptions('圖片_20250201015432.png', '馬上發現').tabBarIcon({ focused: false })}</TouchableOpacity>
+                    <TouchableOpacity>{tabOptions('圖片_20250201015430.png', '投注區').tabBarIcon({ focused: false })}</TouchableOpacity>
+                    <TouchableOpacity>{tabOptions('圖片_20250201015427.png', '電子錢包').tabBarIcon({ focused: false })}</TouchableOpacity>
+                    <TouchableOpacity>{tabOptions('圖片_20250201015418.png', '更多').tabBarIcon({ focused: false })}</TouchableOpacity>
+                    <TouchableOpacity>{tabOptions('圖片_20250201015434.png', '我').tabBarIcon({ focused: false })}</TouchableOpacity>
+                </View>
+            </View>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    entireContainer: {height: '100%', position: 'relative'},
     headerTop: {height: 8, backgroundColor: '#022f77'},
     topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 10,  },
     text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: 'black' },
@@ -331,6 +365,38 @@ const styles = StyleSheet.create({
     modalButtons: { flexDirection: 'row', justifyContent: 'space-between' },
     modalButton: { padding: 10, backgroundColor: '#022f77', borderRadius: 5 },
     modalButtonText: { color: 'white' },
+    bottomTabs: {
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor: '#fff',
+        borderTopColor: '#ddd',
+        borderTopWidth: 1
+    },
+    bottomTabAlign: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    tabContainer: {
+        alignItems: 'center',
+        width: 70,
+        marginVertical: 2,
+    },
+    icon: {
+        width: 60,
+        height: 28,
+        resizeMode: 'contain',
+    },
+    focusedTab: {
+        backgroundColor: '#E1EBEE',
+        borderRadius: 20,
+    },
+    tabText: {
+        fontSize: 12,
+        color: 'black',
+        fontFamily: 'NotoSansTC-Regular',
+        fontWeight: 'bold',
+    },
 });
 
 export default AcountRecord;
