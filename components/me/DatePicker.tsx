@@ -5,6 +5,7 @@ import CalendarPicker from 'react-native-calendar-picker';
 import { I18nManager } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 // Set RTL to false for Chinese layout
 I18nManager.forceRTL(false);
@@ -40,78 +41,82 @@ export default function App() {
     }, [selectedStartDate, selectedEndDate]);
 
     return (
-        <View style={styles.container}>
-            <StatusBar style="auto" />
-            <View style={styles.topText}>
-                <Text style={styles.dateText}>{formattedDateRange}</Text>
-                <Text style={styles.introText}>每次最多可以搜尋過去30天內其中8天。 (以香港時間計算）</Text>
-            </View>
-            <CalendarPicker
-                key={calendarKey}
-                allowRangeSelection={true}
-                allowBackwardRangeSelect={true} // Allows selecting end date before start date
-                showDayStragglers={true} // Ensures previous month's days are clickable
-                todayBackgroundColor="#022f77"
-                selectedDayColor="#022f77"
-                selectedDayTextColor="#fff"
-                selectedDayStyle={styles.selectedDay} // Apply custom circle styling
-                minDate={new Date(2000, 0, 1)} // Ensure old dates are allowed
-                maxDate={today}
-                previousComponent={<Ionicons name="chevron-back" size={16} />}
-                nextComponent={<Ionicons name="chevron-forward" size={16} />}
-                maxRangeDuration={8}
-                textStyle={{
-                    color: '#000',
-                    fontSize: 20, 
-                    fontWeight: '400',
-                }}
-                disabledDatesTextStyle={{
-                    color: '#bbb',
-                    fontSize: 20, 
-                    fontWeight: '400',
-                }}
-                weekdays={['日', '一', '二', '三', '四', '五', '六']}
-                months={[
-                    '一月', '二月', '三月', '四月', '五月', '六月',
-                    '七月', '八月', '九月', '十月', '十一月', '十二月'
-                ]}
-                onDateChange={(date: Date, type: string) => {
-                    if (type === 'START_DATE') {
-                        setSelectedStartDate(date);
-                        setSelectedEndDate(null); // Reset end date for single date selection
-                    } else if (type === 'END_DATE') {
-                        setSelectedEndDate(date);
-                    }
-                }}
-            />
-            <View style={styles.horizonLine}></View>
-            <View style={styles.buttons}>
-                <TouchableOpacity
-                    style={styles.resetButton}
-                    onPress={() => {
-                        setSelectedStartDate(null); // Reset start date
-                        setSelectedEndDate(null); // Reset end date
-                        setFormattedDateRange(todayDate); // Reset the displayed date range to today's date
-                        setCalendarKey(prevKey => prevKey + 1);
+        <>
+            <View style={styles.headerTop}></View>
+            <View style={styles.container}>
+                <StatusBar style="auto" />
+                <View style={styles.topText}>
+                    <Text style={styles.dateText}>{formattedDateRange}</Text>
+                    <Text style={styles.introText}>每次最多可以搜尋過去30天內其中8天。 (以香港時間計算）</Text>
+                </View>
+                <CalendarPicker
+                    key={calendarKey}
+                    allowRangeSelection={true}
+                    allowBackwardRangeSelect={true} // Allows selecting end date before start date
+                    showDayStragglers={true} // Ensures previous month's days are clickable
+                    todayBackgroundColor="#022f77"
+                    selectedDayColor="#022f77"
+                    selectedDayTextColor="#fff"
+                    selectedDayStyle={styles.selectedDay} // Apply custom circle styling
+                    minDate={new Date(2000, 0, 1)} // Ensure old dates are allowed
+                    maxDate={today}
+                    previousComponent={<Ionicons name="chevron-back" size={16} />}
+                    nextComponent={<Ionicons name="chevron-forward" size={16} />}
+                    maxRangeDuration={8}
+                    textStyle={{
+                        color: '#000',
+                        fontSize: 20, 
+                        fontWeight: '400',
                     }}
-                >
-                    <Text style={styles.resetButtonText}>重置</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.okButton}
-                    onPress={() => {
-                        router.back(); // Navigate back to the previous screen
-                        router.setParams({ selectedDateRange: formattedDateRange }); // Pass the selected date range
+                    disabledDatesTextStyle={{
+                        color: '#bbb',
+                        fontSize: 20, 
+                        fontWeight: '400',
                     }}
-                >
-                    <Text style={styles.okButtonText}>確定</Text>
-                </TouchableOpacity>
+                    weekdays={['日', '一', '二', '三', '四', '五', '六']}
+                    months={[
+                        '一月', '二月', '三月', '四月', '五月', '六月',
+                        '七月', '八月', '九月', '十月', '十一月', '十二月'
+                    ]}
+                    onDateChange={(date: Date, type: string) => {
+                        if (type === 'START_DATE') {
+                            setSelectedStartDate(date);
+                            setSelectedEndDate(null); // Reset end date for single date selection
+                        } else if (type === 'END_DATE') {
+                            setSelectedEndDate(date);
+                        }
+                    }}
+                />
+                <View style={styles.horizonLine}></View>
+                <View style={styles.buttons}>
+                    <TouchableOpacity
+                        style={styles.resetButton}
+                        onPress={() => {
+                            setSelectedStartDate(null); // Reset start date
+                            setSelectedEndDate(null); // Reset end date
+                            setFormattedDateRange(todayDate); // Reset the displayed date range to today's date
+                            setCalendarKey(prevKey => prevKey + 1);
+                        }}
+                    >
+                        <Text style={styles.resetButtonText}>重置</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.okButton}
+                        onPress={() => {
+                            router.back(); // Navigate back to the previous screen
+                            router.setParams({ selectedDateRange: formattedDateRange }); // Pass the selected date range
+                        }}
+                    >
+                        <Text style={styles.okButtonText}>確定</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
+    headerTop: {height: 8, backgroundColor: '#022f77'},
     container: {padding: 15, backgroundColor: 'white', height: '100%'},
     topText:{ marginBottom: 30 },
     dateText: {

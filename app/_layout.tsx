@@ -40,9 +40,9 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: '#022f77', },
+          headerStyle: { backgroundColor: '#022f77' },
           headerTintColor: 'white',
-          headerTitleStyle: { fontSize: 18, fontWeight: 'bold' },
+          headerTitleStyle: { fontSize: 18, fontFamily: 'NotoSansTC-Bold', },
           headerTitleAlign: 'center',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()} style={ styles.backBtn }>
@@ -53,9 +53,9 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="routers/EditProfile" options={{ title: '意見/建議', headerTitleStyle: {fontFamily: 'NotoSansTC-Medium', fontWeight: 'bold'} }} />
-        <Stack.Screen name="routers/AcountRecord" options={{ title: '户口紀錄', headerTitleStyle: {fontFamily: 'NotoSansTC-Medium', fontWeight: 'bold'} }} />
-        <Stack.Screen name="routers/DatePicker" options={{ title: '搜尋時段', headerTitleStyle: {fontFamily: 'NotoSansTC-Medium', fontWeight: 'bold'} }} />
+        <Stack.Screen name="routers/EditProfile" options={{ title: '意見/建議' }} />
+        <Stack.Screen name="routers/AcountRecord" options={{ title: '戶口紀錄' }} />
+        <Stack.Screen name="routers/DatePicker" options={{ title: '搜尋時段' }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
   backText: {
     color: 'white',
     fontWeight: 'bold',
-    marginTop: 5
+    marginTop: 5,
   }
 })

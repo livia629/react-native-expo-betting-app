@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
+import Svg, { Circle, Line } from 'react-native-svg';
 
 type RouteParams = {
     currentTime: string;
@@ -110,41 +111,6 @@ const AcountRecord = () => {
         updateDateRange(button);
     };
 
-    // const acountDatas = [
-    //     [
-    //         { key: '參考編號', value: '-' },
-    //         { key: '日期 / 時間', value: '-' },
-    //         { key: '投注類別', value: '-' },
-    //         { key: '細節', value: '2025年2月1日03:11 之戶口結餘: $54.60' },
-    //         { key: '支出', value: '-' },
-    //         { key: '存入', value: '-' },
-    //     ],
-    //     [
-    //         { key: '參考編號', value: '5447' },
-    //         { key: '日期 / 時間', value: '01-02-2025 03:11' },
-    //         { key: '投注類別', value: '六合彩' },
-    //         { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
-    //         { key: '支出', value: '$10.00' },
-    //         { key: '存入', value: '-' },
-    //     ],
-    //     [
-    //         { key: '參考編號', value: '5448' },
-    //         { key: '日期 / 時間', value: '01-02-2025 03:11' },
-    //         { key: '投注類別', value: '六合彩' },
-    //         { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
-    //         { key: '支出', value: '$10.00' },
-    //         { key: '存入', value: '-' },
-    //     ],
-    //     [
-    //         { key: '參考編號', value: '5449' },
-    //         { key: '日期 / 時間', value: '01-02-2025 03:11' },
-    //         { key: '投注類別', value: '六合彩' },
-    //         { key: '細節', value: '25/CNY 期 (金多寶) 4 + 10 + 16 + 28 + 36 + 46 $10(運財號碼)' },
-    //         { key: '支出', value: '$10.00' },
-    //         { key: '存入', value: '-' },
-    //     ],
-    // ]
-
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [newRecord, setNewRecord] = useState({
         參考編號: '',
@@ -183,6 +149,7 @@ const AcountRecord = () => {
 
     return (
         <>
+            <View style={styles.headerTop}></View>
             <View style={styles.topContainer}>
                 <Text style={styles.text}>時間: {formatCurrentTime(currentTime)}</Text>
                 <Text style={styles.text}>投注戶口號碼: {account}</Text>
@@ -227,7 +194,7 @@ const AcountRecord = () => {
                         <Text style={styles.text}>搜尋時段: {dateRange.replace('-', ' 至 ')}</Text>
                     </View>
                     <TouchableOpacity style={styles.addButton} onPress={() => setIsModalVisible(true)}>
-                        <MaterialIcons name="add" size={24} color="white" />
+                        <MaterialIcons name="add" size={20} color="#022f77" />
                     </TouchableOpacity>
                     <View style={styles.comContent}>
                         <ScrollView contentContainerStyle={{ paddingBottom: 120 }}>
@@ -239,7 +206,16 @@ const AcountRecord = () => {
                                         <Text style={rowIndex === 0 ? styles.headerValueText : styles.cellValueText}>{row.value}</Text>
                                         {row.key === "參考編號" && row.value != "-" ?(
                                             <TouchableOpacity style={styles.shareButton}>
-                                                <MaterialIcons name="share" size={18} color="black" style={styles.shareIcon} />
+                                                <Svg width="20" height="20" viewBox="0 0 40 40" fill="none" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                                                    {/* Circles */}
+                                                    <Circle cx="30" cy="10" r="5" />
+                                                    <Circle cx="10" cy="20" r="5" />
+                                                    <Circle cx="30" cy="30" r="5" />
+
+                                                    {/* Connecting Lines */}
+                                                    <Line x1="25" y1="10" x2="15" y2="20" />
+                                                    <Line x1="25" y1="30" x2="15" y2="20" />
+                                                </Svg>
                                                 <Text style={styles.shareText}>分享注項</Text>
                                             </TouchableOpacity>
                                         ):(
@@ -261,6 +237,10 @@ const AcountRecord = () => {
                                             placeholder={key}
                                             value={newRecord[key as keyof typeof newRecord]}
                                             onChangeText={(text) => setNewRecord({ ...newRecord, [key]: text })}
+                                            multiline={true} 
+                                            numberOfLines={4}
+                                            textAlignVertical="top"
+                                            returnKeyType="default"
                                         />
                                     ))}
                                     <View style={styles.modalButtons}>
@@ -282,6 +262,7 @@ const AcountRecord = () => {
 };
 
 const styles = StyleSheet.create({
+    headerTop: {height: 8, backgroundColor: '#022f77'},
     topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 10,  },
     text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: 'black' },
     destext: { fontFamily: 'NotoSansTC-Regular', lineHeight: 20, fontSize: 14, color: 'black' },
@@ -304,7 +285,7 @@ const styles = StyleSheet.create({
     comContent: {backgroundColor: 'eee', paddingHorizontal: 15, paddingVertical: 10, },
     tableContainer: { marginBottom: 10, backgroundColor: '#F0F0F0', borderRadius: 10, overflow: 'hidden', width: '100%', maxWidth: 380, alignSelf: 'center', borderWidth: 1, borderColor: '#ddd' },
     row: { flexDirection: 'row', paddingHorizontal: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#ddd' },
-    headerRow: { backgroundColor: '#888', height: 45, paddingVertical: 5, verticalAlign: 'middle' },
+    headerRow: { backgroundColor: '#888', height: 42, paddingVertical: 5, verticalAlign: 'middle' },
     headerText: { width: 130, fontFamily: 'NotoSansTC-Medium', fontWeight: '600', lineHeight: 42, fontSize: 17, color: 'white' },
     headerValueText: { flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 40, fontSize: 16, color: 'white' },
     cellText: { paddingVertical: 10, width: 130, borderRightColor: '#ddd', borderRightWidth: 1, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
@@ -327,7 +308,7 @@ const styles = StyleSheet.create({
     },
     shareText: {
         fontFamily: 'NotoSansTC-Medium',
-        fontSize: 16,
+        fontSize: 14,
         color: 'black',
         fontWeight: '600',
         includeFontPadding: false
@@ -336,7 +317,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 20,
         top: 20,
-        backgroundColor: '#022f77',
+        backgroundColor: '#fff',
         padding: 10,
         borderRadius: 50,
         alignItems: 'center',
