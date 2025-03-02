@@ -46,7 +46,7 @@ export default function RootLayout() {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()} style={ styles.backBtn }>
-              <MaterialIcons name="chevron-left" size={18} color="white" style={{marginTop: 5}} />
+              <MaterialIcons name="chevron-left" size={20} color="white" style={{marginTop: 5, fontWeight: 'bold'}} />
               <Text style={styles.backText}>返回</Text>
             </TouchableOpacity>
           ),

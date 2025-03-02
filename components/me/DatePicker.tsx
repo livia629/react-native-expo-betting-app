@@ -79,8 +79,8 @@ export default function App() {
                     selectedDayStyle={styles.selectedDay} // Apply custom circle styling
                     minDate={new Date(2000, 0, 1)} // Ensure old dates are allowed
                     maxDate={today}
-                    previousComponent={<Ionicons name="chevron-back" size={16} />}
-                    nextComponent={<Ionicons name="chevron-forward" size={16} />}
+                    previousComponent={<Ionicons name="chevron-back" size={16} style={styles.previousIcon} />}
+                    nextComponent={<Ionicons name="chevron-forward" size={16} style={styles.nextIcon} />}
                     maxRangeDuration={8}
                     textStyle={{
                         color: '#000',
@@ -202,4 +202,10 @@ const styles = StyleSheet.create({
         fontFamily: 'NotoSansTC-Regular',
         fontWeight: 'bold',
     },
+    previousIcon: {
+        fontWeight: 'bold'
+    },
+    nextIcon: {
+        fontWeight: 'bold'
+    }
 });

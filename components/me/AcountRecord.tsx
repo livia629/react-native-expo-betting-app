@@ -6,6 +6,7 @@ import { useRouter, useLocalSearchParams } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import Svg, { Circle, Line } from 'react-native-svg';
 import { Tabs } from 'expo-router';
+import { LinearGradient } from "expo-linear-gradient";
 
 type RouteParams = {
     currentTime: string;
@@ -46,7 +47,7 @@ const AcountRecord = () => {
             navigation.setOptions({
                 headerLeft: () => (
                     <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-                        <MaterialIcons name="chevron-left" size={18} color="white" style={{marginTop: 5}} />
+                        <MaterialIcons name="chevron-left" size={20} color="white" style={{marginTop: 5, fontWeight: 'bold'}} />
                         <Text style={styles.backText}>返回</Text>
                     </TouchableOpacity>
                 ),
@@ -79,17 +80,17 @@ const AcountRecord = () => {
         switch (button) {
             case '今日':
                 startDate = currentDate;
-                setDateRange(`${formatDate(startDate)}-${formatDate(startDate)}`);
+                setDateRange(`${formatDate(startDate)} - ${formatDate(startDate)}`);
                 break;
             case '最近2日':
                 startDate = new Date(currentDate);
                 startDate.setDate(currentDate.getDate() - 1);
-                setDateRange(`${formatDate(startDate)}-${formatDate(currentDate)}`);
+                setDateRange(`${formatDate(startDate)} - ${formatDate(currentDate)}`);
                 break;
             case '最近8日':
                 startDate = new Date(currentDate);
                 startDate.setDate(currentDate.getDate() - 7);
-                setDateRange(`${formatDate(startDate)}-${formatDate(currentDate)}`);
+                setDateRange(`${formatDate(startDate)} - ${formatDate(currentDate)}`);
                 break;
             default:
                 break;
@@ -175,6 +176,12 @@ const AcountRecord = () => {
                 <Text style={styles.text}>投注戶口號碼: {account}</Text>
                 <Text style={styles.text}>結餘: ${balance}</Text>
             </View>
+            <LinearGradient
+                colors={["#ccc", "#eee"]}
+                start={{ x: 0.5, y: 0 }}
+                end={{ x: 0.5, y: 1 }}
+                style={styles.gradientBox}
+            />
             {!isCompleteScreen ? (
                 <View style={styles.bottomContainer}>
                     <Text style={styles.destext}>每次最多可以搜尋過去30天內其中8天。 (以香港時間計算）</Text>
@@ -214,7 +221,7 @@ const AcountRecord = () => {
                         <Text style={styles.text}>搜尋時段: {dateRange.replace('-', ' 至 ')}</Text>
                     </View>
                     <TouchableOpacity style={styles.addButton} onPress={() => setIsModalVisible(true)}>
-                        <MaterialIcons name="add" size={20} color="#022f77" />
+                        <MaterialIcons name="add" size={20} color="#fff" />
                     </TouchableOpacity>
                     <View style={styles.comContent}>
                         <ScrollView contentContainerStyle={{ paddingBottom: 180 }}>
@@ -300,30 +307,30 @@ const styles = StyleSheet.create({
     topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 10,  },
     text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: 'black' },
     destext: { fontFamily: 'NotoSansTC-Regular', lineHeight: 20, fontSize: 14, color: 'black' },
-    bottomContainer: { backgroundColor: '#eee', paddingHorizontal: 15, paddingVertical: 8, borderTopColor: '#ccc', borderTopWidth: 2,  },
+    bottomContainer: { backgroundColor: '#eee', paddingHorizontal: 15, paddingVertical: 8,   },
     dateBtns: { flexDirection: 'row', alignItems: 'center', marginTop: 10, marginBottom: 15, gap: 10 },
-    dateBtn: { borderColor: '#022f77', borderWidth: 2, borderRadius: 20, paddingHorizontal: 15, paddingVertical: 3 },
+    dateBtn: { borderColor: '#022f77', borderWidth: 1, borderRadius: 20, paddingHorizontal: 15, paddingVertical: 3 },
     dateBtnText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 15, color: '#022f77' },
     selectedDateBtn: { backgroundColor: '#022f77' },
     selectedDateBtnText: { color: 'white' },
     boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', paddingVertical: 10, paddingHorizontal: 15, borderColor: '#888', borderWidth: 1.3, borderRadius: 5 },
     boxBtnLeftText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontSize: 18, color: 'black' },
-    boxBtnRightText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontWeight: 'bold', fontSize: 18, color: 'black' },
+    boxBtnRightText: { fontFamily: 'NotoSansTC-bold', lineHeight: 24, fontWeight: 'bold', fontSize: 18, color: 'black' },
     horizonLine: { borderBottomWidth: 1, borderColor: "#888", height: 25, marginBottom: 25 },
     send: { width: '100%', backgroundColor: '#022f77', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
     sendText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#fff' },
-    completeBtnText: { fontFamily: 'NotoSansTC-Medium', fontSize: 14, color: 'white', fontWeight: 'bold', marginTop: 5 },
+    completeBtnText: { fontFamily: 'NotoSansTC-bold', fontSize: 14, color: 'white', fontWeight: 'bold', marginTop: 5 },
     backBtn: { flexDirection: 'row', alignItems: "center", },
     backText: { color: 'white', fontWeight: 'bold', marginTop: 5 },
-    comDescriptionBox: {backgroundColor: "#F6F6F6", paddingHorizontal: 15, paddingVertical: 8, borderBottomColor: '#ccc', borderBottomWidth: 2},
+    comDescriptionBox: {backgroundColor: "#F6F6F6", paddingHorizontal: 15, paddingVertical: 8, },
     comContent: {backgroundColor: 'eee', paddingHorizontal: 15, paddingVertical: 10, },
     tableContainer: { marginBottom: 10, backgroundColor: '#F0F0F0', borderRadius: 10, overflow: 'hidden', width: '100%', maxWidth: 380, alignSelf: 'center', borderWidth: 1, borderColor: '#ddd' },
-    row: { flexDirection: 'row', paddingHorizontal: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#ddd' },
+    row: { flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 5, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#ddd' },
     headerRow: { backgroundColor: '#888', height: 42, paddingVertical: 5, verticalAlign: 'middle' },
     headerText: { width: 130, fontFamily: 'NotoSansTC-Medium', fontWeight: '600', lineHeight: 42, fontSize: 17, color: 'white' },
     headerValueText: { flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 40, fontSize: 16, color: 'white' },
-    cellText: { paddingVertical: 10, width: 130, borderRightColor: '#ddd', borderRightWidth: 1, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
-    cellValueText: { paddingVertical: 10, flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
+    cellText: { paddingVertical: 5, width: 130, borderRightColor: '#ddd', borderRightWidth: 1, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
+    cellValueText: { paddingVertical: 5, flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },
     shareButton: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -380,7 +387,7 @@ const styles = StyleSheet.create({
     tabContainer: {
         alignItems: 'center',
         width: 70,
-        marginVertical: 2,
+        marginVertical: 3,
     },
     icon: {
         width: 60,
@@ -396,6 +403,10 @@ const styles = StyleSheet.create({
         color: 'black',
         fontFamily: 'NotoSansTC-Regular',
         fontWeight: 'bold',
+    },
+    gradientBox: {
+        height: 4, // ✅ Set height to 5px
+        width: "100%", // ✅ Full width
     },
 });
 
