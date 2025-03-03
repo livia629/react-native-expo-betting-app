@@ -5,8 +5,8 @@ import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import Svg, { Circle, Line } from 'react-native-svg';
-import { Tabs } from 'expo-router';
 import { LinearGradient } from "expo-linear-gradient";
+import { Picker } from '@react-native-picker/picker';
 
 type RouteParams = {
     currentTime: string;
@@ -114,6 +114,7 @@ const AcountRecord = () => {
     };
 
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [showShareButton, setShowShareButton] = useState("No");
     const [newRecord, setNewRecord] = useState({
         參考編號: '',
         日期時間: '',
@@ -121,6 +122,7 @@ const AcountRecord = () => {
         細節: '',
         支出: '',
         存入: '',
+        showShare: "No",
     });
 
     const [acountDatas, setAcountDatas] = useState([
@@ -136,7 +138,7 @@ const AcountRecord = () => {
 
     const handleAddRecord = () => {
         const newEntry = [
-            { key: '參考編號', value: newRecord.參考編號 || '-' },
+            { key: '參考編號', value: newRecord.參考編號 || '-', showShare: showShareButton },
             { key: '日期 / 時間', value: newRecord.日期時間 || '-' },
             { key: '投注類別', value: newRecord.投注類別 || '-' },
             { key: '細節', value: newRecord.細節 || '-' },
@@ -146,7 +148,8 @@ const AcountRecord = () => {
 
         setAcountDatas([...acountDatas, newEntry]);
         setIsModalVisible(false); // Close modal
-        setNewRecord({ 參考編號: '', 日期時間: '', 投注類別: '', 細節: '', 支出: '', 存入: '' }); // Reset form
+        setNewRecord({ 參考編號: '', 日期時間: '', 投注類別: '', 細節: '', 支出: '', 存入: '', showShare: "No" }); // Reset form
+        setShowShareButton("No");
     };
 
     const imageMap: { [key: string]: any } = {
@@ -231,22 +234,17 @@ const AcountRecord = () => {
                                     <View key={rowIndex} style={[styles.row, rowIndex === 0 && styles.headerRow]}>
                                         <Text style={rowIndex === 0 ? styles.headerText : styles.cellText}>{row.key}</Text>
                                         <Text style={rowIndex === 0 ? styles.headerValueText : styles.cellValueText}>{row.value}</Text>
-                                        {row.key === "參考編號" && row.value != "-" ?(
+                                        {row.key === "參考編號" && row?.showShare === "Yes" && (
                                             <TouchableOpacity style={styles.shareButton}>
                                                 <Svg width="20" height="20" viewBox="0 0 40 40" fill="none" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                                                    {/* Circles */}
                                                     <Circle cx="30" cy="10" r="5" />
                                                     <Circle cx="10" cy="20" r="5" />
                                                     <Circle cx="30" cy="30" r="5" />
-
-                                                    {/* Connecting Lines */}
                                                     <Line x1="25" y1="10" x2="15" y2="20" />
                                                     <Line x1="25" y1="30" x2="15" y2="20" />
                                                 </Svg>
                                                 <Text style={styles.shareText}>分享注項</Text>
                                             </TouchableOpacity>
-                                        ):(
-                                            ""
                                         )}
                                     </View>
                                     ))}
@@ -258,18 +256,29 @@ const AcountRecord = () => {
                                 <View style={styles.modalContent}>
                                     <Text style={styles.modalTitle}>新增記錄</Text>
                                     {Object.keys(newRecord).map((key, index) => (
-                                        <TextInput
-                                            key={index}
-                                            style={styles.input}
-                                            placeholder={key}
-                                            value={newRecord[key as keyof typeof newRecord]}
-                                            onChangeText={(text) => setNewRecord({ ...newRecord, [key]: text })}
-                                            multiline={true} 
-                                            numberOfLines={4}
-                                            textAlignVertical="top"
-                                            returnKeyType="default"
-                                        />
+                                        key !== "showShare" && ( // ✅ Prevent showing "showShare" in inputs
+                                            <TextInput
+                                                key={index}
+                                                style={styles.input}
+                                                placeholder={key}
+                                                value={newRecord[key as keyof typeof newRecord]}
+                                                onChangeText={(text) => setNewRecord({ ...newRecord, [key]: text })}
+                                                multiline={true} 
+                                                numberOfLines={4}
+                                                textAlignVertical="top"
+                                                returnKeyType="default"
+                                            />
+                                        )
                                     ))}
+                                    <Text style={styles.label}>是否顯示 分享注項?</Text>
+                                    <Picker
+                                        selectedValue={showShareButton}
+                                        onValueChange={(itemValue) => setShowShareButton(itemValue)}
+                                        style={styles.picker}
+                                    >
+                                        <Picker.Item label="No" value="No" />
+                                        <Picker.Item label="Yes" value="Yes" />
+                                    </Picker>
                                     <View style={styles.modalButtons}>
                                         <TouchableOpacity style={styles.modalButton} onPress={() => setIsModalVisible(false)}>
                                             <Text style={styles.modalButtonText}>取消</Text>
@@ -282,8 +291,6 @@ const AcountRecord = () => {
                             </View>
                         </Modal>
                     </View>
-                    
-
                 </>
             )}
 
@@ -377,22 +384,24 @@ const styles = StyleSheet.create({
         bottom: 0,
         backgroundColor: '#fff',
         borderTopColor: '#ddd',
-        borderTopWidth: 1
+        borderTopWidth: 1,
+        width: '100%'
     },
     bottomTabAlign: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        paddingHorizontal: 10
     },
     tabContainer: {
         alignItems: 'center',
-        width: 70,
         marginVertical: 3,
+        flex: 1,
     },
     icon: {
-        width: 60,
-        height: 28,
-        resizeMode: 'contain',
+        width: 30, // Reduced to avoid overlap
+        height: 30,
+        resizeMode: "contain",
     },
     focusedTab: {
         backgroundColor: '#E1EBEE',
@@ -405,9 +414,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     gradientBox: {
-        height: 4, // ✅ Set height to 5px
+        height: 5, // ✅ Set height to 5px
         width: "100%", // ✅ Full width
     },
+    picker: { height: 50, width: "100%" },
+    label: { fontSize: 16, fontWeight: "bold", marginTop: 10 },
 });
 
 export default AcountRecord;
