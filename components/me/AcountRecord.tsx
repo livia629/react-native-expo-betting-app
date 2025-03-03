@@ -276,8 +276,8 @@ const AcountRecord = () => {
                                         onValueChange={(itemValue) => setShowShareButton(itemValue)}
                                         style={styles.picker}
                                     >
-                                        <Picker.Item label="No" value="No" />
-                                        <Picker.Item label="Yes" value="Yes" />
+                                        <Picker.Item label="否" value="No" />
+                                        <Picker.Item label="是" value="Yes" />
                                     </Picker>
                                     <View style={styles.modalButtons}>
                                         <TouchableOpacity style={styles.modalButton} onPress={() => setIsModalVisible(false)}>
@@ -417,8 +417,8 @@ const styles = StyleSheet.create({
         height: 5, // ✅ Set height to 5px
         width: "100%", // ✅ Full width
     },
-    picker: { height: 50, width: "100%" },
-    label: { fontSize: 16, fontWeight: "bold", marginTop: 10 },
+    picker: { height: 50, width: "100%", marginBottom: 10 },
+    label: { fontSize: 16, fontWeight: "bold", marginTop: 10, marginBottom: 5 },
 });
 
 export default AcountRecord;
