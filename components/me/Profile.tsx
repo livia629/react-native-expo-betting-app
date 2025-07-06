@@ -112,6 +112,7 @@ const Profile = () => {
         </View>
         <View style={styles.profileBottom}>
         <Text style={styles.myHkjc}>我的HKJC</Text>
+        <View style={styles.myCouponsView}>
             <View style={styles.myCouponsBox}>
                 <Image 
                   source={require('../../assets/images/圖片_20250201015438.png')} 
@@ -119,6 +120,15 @@ const Profile = () => {
                 />
                 <Text style={styles.myCouponsText}>我的優惠券</Text>
             </View>
+            <View style={{...styles.myCouponsBox, marginLeft: 16}}>
+                <Image 
+                  source={require('../../assets/images/圖片_20250201015439.png')} 
+                  style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
+                />
+                <Text style={styles.myCouponsText}>我的預訂</Text>
+            </View>
+        </View>  
+            
             <TouchableOpacity onPress={() => router.push('/routers/EditProfile')}>
               <View style={styles.suggestion}>
                   <View style={styles.suggestionView}>
@@ -209,8 +219,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#000',
   },
+  myCouponsView: {
+    flexDirection: 'row'
+  },
   myCouponsBox: {
-    width: '50%', 
+    flex: 1, 
     borderWidth: 0,
     borderRadius: 10,
     backgroundColor: '#fff',
