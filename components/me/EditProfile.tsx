@@ -1,12 +1,35 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
 
 const EditProfile = () => {
   const [balance, setBalance] = useState('');
   const [account, setAccount] = useState('');
   const router = useRouter();
+
+  // Load profile data every time the screen is focused
+  useFocusEffect(
+    useCallback(() => {
+      const loadProfileData = async () => {
+        try {
+          const balanceFromStorage = await AsyncStorage.getItem('balance');
+          const accountFromStorage = await AsyncStorage.getItem('account');
+          if (balanceFromStorage) {
+            setBalance(balanceFromStorage);
+          }
+          if (accountFromStorage) {
+            setAccount(accountFromStorage);
+          }
+        } catch (error) {
+          console.error('Failed to load data', error);
+        }
+      };
+      
+      loadProfileData();
+    }, [])
+  );
 
   // Save balance and account number to AsyncStorage
   const handleSubmit = async () => {

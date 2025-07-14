@@ -9,8 +9,8 @@ import CustomText from '../CustomText';
 
 const Profile = () => {
   const [isVisible, setIsVisible] = useState(true); 
-  const [balance, setBalance] = useState('$*****'); 
-  const [account, setAccount] = useState('投注戶口號碼: 15339692');
+  const [balance, setBalance] = useState(''); 
+  const [account, setAccount] = useState('');
   const [fontsLoaded] = useFonts({
     'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
     'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
@@ -29,11 +29,11 @@ const Profile = () => {
           const accountFromStorage = await AsyncStorage.getItem('account');
           if (balanceFromStorage) {
             setSavedBalance(balanceFromStorage);
-            setBalance(`$${balanceFromStorage}`);
+            setBalance(balanceFromStorage);
           }
           if (accountFromStorage) {
             setSavedAccount(accountFromStorage);
-            setAccount(`投注戶口號碼: ${accountFromStorage}`);
+            setAccount(accountFromStorage);
           }
         } catch (error) {
           console.error('Failed to load data', error);
@@ -82,8 +82,8 @@ const Profile = () => {
                     }
                 </TouchableOpacity>
             </View>
-            <Text style={styles.balance}>{isVisible ? '$*****' : balance}</Text>
-            <Text style={styles.account}>{account}</Text>
+            <Text style={styles.balance}>$ {isVisible ? '*****' : balance}</Text>
+            <Text style={styles.account}>投注戶口號碼: {account}</Text>
         </ImageBackground>
         <View style={styles.profileCenter}>
             <View style={styles.profileCenterDiv}>
