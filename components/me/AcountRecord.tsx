@@ -103,7 +103,8 @@ const AcountRecord = () => {
 
     useEffect(() => {
         if (selectedDateRange) {
-            setDateRange(selectedDateRange); // Update date range when returning from DatePicker
+            const currentDate = new Date();
+            setDateRange(`${selectedDateRange} - ${formatDate(currentDate)}`);// Update date range when returning from DatePicker
             setSelectedButton(null); // Reset selected button to remove styling
         }
     }, [selectedDateRange]);
