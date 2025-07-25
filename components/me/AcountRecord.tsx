@@ -131,9 +131,17 @@ const AcountRecord = () => {
             { key: '參考編號', value: '-' },
             { key: '日期 / 時間', value: '-' },
             { key: '投注類別', value: '-' },
-            { key: '細節', value: '2025年2月1日03:11 之戶口結餘: $54.60' },
+            { key: '細節', value: '2025年7月25日03:11 之戶口結餘: $54.60' },
             { key: '支出', value: '-' },
             { key: '存入', value: '-' },
+        ],
+        [
+            { key: '參考編號', value: '5580' },
+            { key: '日期 / 時間', value: '25-07-2025 08:35' },
+            { key: '投注類別', value: '-' },
+            { key: '細節', value: '總費盡即時存款至投注戶口 (參考編號: 2025062900000411)' },
+            { key: '支出', value: '-' },
+            { key: '存入', value: '$500.0' },
         ],
     ]);
 
@@ -172,6 +180,13 @@ const AcountRecord = () => {
       ),
     });
 
+    const [isTradeTypePickerVisible, setIsTradeTypePickerVisible] = useState(false);
+    const [selectedTradeType, setSelectedTradeType] = useState("所有");
+
+    const [isTypePickerVisible, setIsTypePickerVisible] = useState(false);
+    const [selectedType, setSelectedType] = useState("所有");
+
+
     return (
         <View style={styles.entireContainer}>
             <View style={styles.headerTop}></View>
@@ -207,17 +222,84 @@ const AcountRecord = () => {
                         <Text style={styles.boxBtnRightText}>{dateRange}</Text>
                     </TouchableOpacity>
                     <View style={styles.horizonLine}></View>
-                    <View style={[styles.boxBtn, { marginBottom: 10 }]}>
+                    <TouchableOpacity style={[styles.boxBtn, { marginBottom: 10 }]} onPress={() => setIsTradeTypePickerVisible(true)}>
                         <Text style={styles.boxBtnLeftText}>交易種類</Text>
-                        <Text style={styles.boxBtnRightText}>所有</Text>
-                    </View>
-                    <View style={styles.boxBtn}>
+                        <Text style={styles.boxBtnRightText}>{selectedTradeType}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.boxBtn} onPress={() => setIsTypePickerVisible(true)}>
                         <Text style={styles.boxBtnLeftText}>顯示種類</Text>
-                        <Text style={styles.boxBtnRightText}>所有</Text>
-                    </View>
+                        <Text style={styles.boxBtnRightText}>{selectedType}</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity style={styles.send} onPress={() => setIsCompleteScreen(true)}>
                         <Text style={styles.sendText}>傳送</Text>
                     </TouchableOpacity>
+
+                    <Modal
+                        visible={isTradeTypePickerVisible}
+                        transparent
+                        animationType="slide"
+                        onRequestClose={() => setIsTradeTypePickerVisible(false)}
+                    >
+                        <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' }}>
+                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, padding: 20 }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
+                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>交易種類</Text>
+                                    <TouchableOpacity onPress={() => setIsTradeTypePickerVisible(false)} style={{ position: 'absolute', right: 0, padding: 5 }}>
+                                        <Text style={{ fontSize: 22, color: '#888' }}>×</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <Picker
+                                    selectedValue={selectedTradeType}
+                                    onValueChange={(itemValue) => setSelectedTradeType(itemValue)}
+                                    style={{ width: '100%', marginBottom: 20 }}
+                                >
+                                    <Picker.Item label="所有" value="所有" />
+                                    <Picker.Item label="賽馬" value="賽馬" />
+                                    <Picker.Item label="足球" value="足球" />
+                                    <Picker.Item label="六合彩" value="六合彩" />
+                                </Picker>
+                                <TouchableOpacity
+                                    style={{ marginTop: 10, backgroundColor: "#022f77", borderRadius: 10, padding: 12, alignItems: 'center' }}
+                                    onPress={() => setIsTradeTypePickerVisible(false)}
+                                >
+                                    <Text style={{ color: "white", fontSize: 16 }}>完成</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
+
+                    <Modal
+                        visible={isTypePickerVisible}
+                        transparent
+                        animationType="slide"
+                        onRequestClose={() => setIsTypePickerVisible(false)}
+                    >
+                        <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' }}>
+                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, padding: 20 }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
+                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>顯示種類</Text>
+                                    <TouchableOpacity onPress={() => setIsTypePickerVisible(false)} style={{ position: 'absolute', right: 0, padding: 5 }}>
+                                        <Text style={{ fontSize: 22, color: '#888' }}>×</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <Picker
+                                    selectedValue={selectedType}
+                                    onValueChange={(itemValue) => setSelectedType(itemValue)}
+                                    style={{ width: '100%', marginBottom: 20 }}
+                                >
+                                    <Picker.Item label="所有" value="所有" />
+                                    <Picker.Item label="已派彩 / 已退款 / 已扣扣之交易" value="已派彩 / 已退款 / 已扣扣之交易" />
+                                </Picker>
+                                <TouchableOpacity
+                                    style={{ marginTop: 10, backgroundColor: "#022f77", borderRadius: 10, padding: 12, alignItems: 'center' }}
+                                    onPress={() => setIsTypePickerVisible(false)}
+                                >
+                                    <Text style={{ color: "white", fontSize: 16 }}>完成</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
+
                 </View>
             ) : (
                 <>
@@ -252,6 +334,8 @@ const AcountRecord = () => {
                                 </View>
                             ))}
                         </ScrollView>
+                        
+                        
                         <Modal visible={isModalVisible} transparent={true} animationType="slide">
                             <View style={styles.modalContainer}>
                                 <View style={styles.modalContent}>
