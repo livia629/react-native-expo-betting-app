@@ -47,7 +47,7 @@ const AcountRecord = () => {
             navigation.setOptions({
                 headerLeft: () => (
                     <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-                        <MaterialIcons name="chevron-left" size={20} color="white" style={{marginTop: 5, fontWeight: 'bold'}} />
+                        <MaterialIcons name="chevron-left" size={24} color="white" style={{marginTop: 5, fontWeight: 'bold'}} />
                         <Text style={styles.backText}>返回</Text>
                     </TouchableOpacity>
                 ),
@@ -379,7 +379,7 @@ const AcountRecord = () => {
                 </>
             )}
 
-            <View style={styles.bottomTabs}>
+            {/* <View style={styles.bottomTabs}>
                 <View style={styles.bottomTabAlign}>
                     <TouchableOpacity>{tabOptions('圖片_20250201015452.png', '主頁').tabBarIcon({ focused: false })}</TouchableOpacity>
                     <TouchableOpacity>{tabOptions('圖片_20250201015432.png', '馬上發現').tabBarIcon({ focused: false })}</TouchableOpacity>
@@ -388,7 +388,7 @@ const AcountRecord = () => {
                     <TouchableOpacity>{tabOptions('圖片_20250201015418.png', '更多').tabBarIcon({ focused: false })}</TouchableOpacity>
                     <TouchableOpacity>{tabOptions('圖片_20250201015434.png', '我').tabBarIcon({ focused: false })}</TouchableOpacity>
                 </View>
-            </View>
+            </View> */}
         </View>
     );
 };
@@ -397,8 +397,8 @@ const styles = StyleSheet.create({
     entireContainer: {height: '100%', position: 'relative'},
     headerTop: {height: 8, backgroundColor: '#022f77'},
     topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 10,  },
-    text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: 'black' },
-    destext: { fontFamily: 'NotoSansTC-Regular', lineHeight: 20, fontSize: 14, color: 'black' },
+    text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 15, color: 'black' },
+    destext: { fontFamily: 'NotoSansTC-Regular', lineHeight: 20, fontSize: 15, color: 'black' },
     bottomContainer: { backgroundColor: '#eee', paddingHorizontal: 15, paddingVertical: 8,   },
     dateBtns: { flexDirection: 'row', alignItems: 'center', marginTop: 10, marginBottom: 15, gap: 10 },
     dateBtn: { borderColor: '#022f77', borderWidth: 1, borderRadius: 20, paddingHorizontal: 15, paddingVertical: 3 },
@@ -413,7 +413,7 @@ const styles = StyleSheet.create({
     sendText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#fff' },
     completeBtnText: { fontFamily: 'NotoSansTC-bold', fontSize: 14, color: 'white', fontWeight: 'bold', marginTop: 5 },
     backBtn: { flexDirection: 'row', alignItems: "center", },
-    backText: { color: 'white', fontWeight: 'bold', marginTop: 5 },
+    backText: { color: 'white', fontWeight: 'bold', marginTop: 5, fontSize: 16 },
     comDescriptionBox: {backgroundColor: "#F6F6F6", paddingHorizontal: 15, paddingVertical: 8, },
     comContent: {backgroundColor: 'eee', paddingHorizontal: 15, paddingVertical: 10, },
     tableContainer: { marginBottom: 10, backgroundColor: '#F0F0F0', borderRadius: 10, overflow: 'hidden', width: '100%', maxWidth: 380, alignSelf: 'center', borderWidth: 1, borderColor: '#ddd' },

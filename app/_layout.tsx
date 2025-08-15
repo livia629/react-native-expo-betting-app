@@ -42,11 +42,11 @@ export default function RootLayout() {
         screenOptions={{
           headerStyle: { backgroundColor: '#022f77' },
           headerTintColor: 'white',
-          headerTitleStyle: { fontSize: 18, fontFamily: 'NotoSansTC-Bold', },
+          headerTitleStyle: { fontSize: 20, fontFamily: 'NotoSansTC-Bold', },
           headerTitleAlign: 'center',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()} style={ styles.backBtn }>
-              <MaterialIcons name="chevron-left" size={20} color="white" style={{marginTop: 5, fontWeight: 'bold'}} />
+              <MaterialIcons name="chevron-left" size={24} color="white" style={{marginTop: 5, fontWeight: 'bold'}} />
               <Text style={styles.backText}>返回</Text>
             </TouchableOpacity>
           ),
@@ -72,5 +72,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     marginTop: 5,
+    fontSize: 16
   }
 })
