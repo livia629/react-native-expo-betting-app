@@ -253,10 +253,10 @@ const AcountRecord = () => {
                                     onValueChange={(itemValue) => setSelectedTradeType(itemValue)}
                                     style={{ width: '100%', marginBottom: 20 }}
                                 >
-                                    <Picker.Item label="所有" value="所有" />
-                                    <Picker.Item label="賽馬" value="賽馬" />
-                                    <Picker.Item label="足球" value="足球" />
-                                    <Picker.Item label="六合彩" value="六合彩" />
+                                    <Picker.Item label="所有" value="所有" color='#000' />
+                                    <Picker.Item label="賽馬" value="賽馬" color='#000'  />
+                                    <Picker.Item label="足球" value="足球" color='#000' />
+                                    <Picker.Item label="六合彩" value="六合彩" color='#000' />
                                 </Picker>
                                 <TouchableOpacity
                                     style={{ marginTop: 10, backgroundColor: "#022f77", borderRadius: 10, padding: 12, alignItems: 'center' }}
@@ -287,8 +287,8 @@ const AcountRecord = () => {
                                     onValueChange={(itemValue) => setSelectedType(itemValue)}
                                     style={{ width: '100%', marginBottom: 20 }}
                                 >
-                                    <Picker.Item label="所有" value="所有" />
-                                    <Picker.Item label="已派彩 / 已退款 / 已扣扣之交易" value="已派彩 / 已退款 / 已扣扣之交易" />
+                                    <Picker.Item label="所有" value="所有" color='#000' />
+                                    <Picker.Item label="已派彩 / 已退款 / 已扣扣之交易" value="已派彩 / 已退款 / 已扣扣之交易"  color='#000'  />
                                 </Picker>
                                 <TouchableOpacity
                                     style={{ marginTop: 10, backgroundColor: "#022f77", borderRadius: 10, padding: 12, alignItems: 'center' }}
