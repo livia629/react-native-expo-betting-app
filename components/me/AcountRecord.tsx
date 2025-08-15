@@ -379,7 +379,7 @@ const AcountRecord = () => {
                 </>
             )}
 
-            {/* <View style={styles.bottomTabs}>
+            <View style={styles.bottomTabs}>
                 <View style={styles.bottomTabAlign}>
                     <TouchableOpacity>{tabOptions('圖片_20250201015452.png', '主頁').tabBarIcon({ focused: false })}</TouchableOpacity>
                     <TouchableOpacity>{tabOptions('圖片_20250201015432.png', '馬上發現').tabBarIcon({ focused: false })}</TouchableOpacity>
@@ -388,7 +388,7 @@ const AcountRecord = () => {
                     <TouchableOpacity>{tabOptions('圖片_20250201015418.png', '更多').tabBarIcon({ focused: false })}</TouchableOpacity>
                     <TouchableOpacity>{tabOptions('圖片_20250201015434.png', '我').tabBarIcon({ focused: false })}</TouchableOpacity>
                 </View>
-            </View> */}
+            </View>
         </View>
     );
 };
@@ -401,8 +401,8 @@ const styles = StyleSheet.create({
     destext: { fontFamily: 'NotoSansTC-Regular', lineHeight: 20, fontSize: 15, color: 'black' },
     bottomContainer: { backgroundColor: '#eee', paddingHorizontal: 15, paddingVertical: 8,   },
     dateBtns: { flexDirection: 'row', alignItems: 'center', marginTop: 10, marginBottom: 15, gap: 10 },
-    dateBtn: { borderColor: '#022f77', borderWidth: 1, borderRadius: 20, paddingHorizontal: 15, paddingVertical: 3 },
-    dateBtnText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 15, color: '#022f77' },
+    dateBtn: { borderColor: '#022f77', borderWidth: 1, borderRadius: 20, paddingHorizontal: 16, paddingVertical: 3 },
+    dateBtnText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#022f77' },
     selectedDateBtn: { backgroundColor: '#022f77' },
     selectedDateBtnText: { color: 'white' },
     boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', paddingVertical: 10, paddingHorizontal: 15, borderColor: '#888', borderWidth: 1.3, borderRadius: 5 },
@@ -476,7 +476,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: 10
+        paddingHorizontal: 16,
+        paddingBottom: 32
     },
     tabContainer: {
         alignItems: 'center',
