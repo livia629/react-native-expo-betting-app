@@ -9,7 +9,12 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lks.topx",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.lantern.topx",
@@ -43,8 +48,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "3f27a03a-6c03-4829-82d4-79a39b7e4c9e"
+        "projectId": "b0f62599-0448-47fe-948e-24556ba99a76"
       }
-    }
+    },
+    "owner": "liviasantiago629"
   }
 }

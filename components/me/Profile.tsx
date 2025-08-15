@@ -165,19 +165,19 @@ const styles = StyleSheet.create({
   balanceText: {
     fontFamily: 'NotoSansTC-Medium',
     lineHeight: 20,
-    fontSize: 16,
+    fontSize: 17,
     color: '#fff',
   },
   balance: {
     color: '#fff',
     fontFamily: 'NotoSansTC-Medium',
     lineHeight: 36,
-    fontSize: 28,
+    fontSize: 32,
   },
   account: {
     fontFamily: 'NotoSansTC-Medium',
     lineHeight: 40,
-    fontSize: 14,
+    fontSize: 15,
     color: '#fff',
   },
   profileCenter: {
@@ -228,10 +228,17 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
     marginTop: 10,
     paddingHorizontal: 15,
-    paddingVertical: 10,
-    gap: 10
+    paddingVertical: 12,
+    gap: 12
   },
   iconContainer: {
     width: 25,

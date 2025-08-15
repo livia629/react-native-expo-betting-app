@@ -15,13 +15,18 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { backgroundColor: '#022f77' },
+        headerStyle: { backgroundColor: '#022f77', height: 120 },
         headerTintColor: 'white',
-        headerTitleStyle: { fontSize: 18, fontFamily: 'NotoSansTC-Bold' }, // ✅ Fixed header font
+        headerTitleStyle: { fontSize: 20, fontFamily: 'NotoSansTC-Bold' },
         headerTitleAlign: 'center',
         tabBarStyle: Platform.select({
-          ios: { position: 'absolute' },
-          default: {},
+          ios: { 
+            position: 'absolute',
+            backgroundColor: 'white',
+          },
+          default: {
+            backgroundColor: 'white',
+          },
         }),
       }}
     >
