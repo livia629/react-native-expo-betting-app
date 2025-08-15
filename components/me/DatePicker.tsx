@@ -94,8 +94,8 @@ export default function App() {
                     }}
                     weekdays={['日', '一', '二', '三', '四', '五', '六']}
                     months={[
-                        '一月', '二月', '三月', '四月', '五月', '六月',
-                        '七月', '八月', '九月', '十月', '十一月', '十二月'
+                        '1月', '2月', '3月', '4月', '5月', '6月',
+                        '7月', '8月', '9月', '10月', '11月', '12月'
                     ]}
                     onDateChange={(date: Date, type: string) => {
                         if (type === 'START_DATE') {
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     dateText: {
         fontFamily: 'NotoSansTC-Medium',
         lineHeight: 24,
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: 'bold',
         color: '#022f77',
     },
@@ -175,17 +175,20 @@ const styles = StyleSheet.create({
         bottom: 0,
         backgroundColor: '#fff',
         borderTopColor: '#ddd',
-        borderTopWidth: 1
+        borderTopWidth: 1,
+        width: '100%'
     },
     bottomTabAlign: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        paddingHorizontal: 0,
+        paddingBottom: 32
     },
     tabContainer: {
         alignItems: 'center',
-        width: 70,
-        marginVertical: 2,
+        marginVertical: 3,
+        flex: 1,
     },
     icon: {
         width: 60,

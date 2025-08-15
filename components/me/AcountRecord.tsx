@@ -195,12 +195,14 @@ const AcountRecord = () => {
                 <Text style={styles.text}>投注戶口號碼: {account}</Text>
                 <Text style={styles.text}>結餘: ${balance}</Text>
             </View>
-            <LinearGradient
-                colors={["#ccc", "#eee"]}
-                start={{ x: 0.5, y: 0 }}
-                end={{ x: 0.5, y: 1 }}
-                style={styles.gradientBox}
-            />
+            { !isCompleteScreen &&
+                <LinearGradient
+                    colors={["#ccc", "#eee"]}
+                    start={{ x: 0.5, y: 0 }}
+                    end={{ x: 0.5, y: 1 }}
+                    style={styles.gradientBox}
+                />
+            }
             {!isCompleteScreen ? (
                 <View style={styles.bottomContainer}>
                     <Text style={styles.destext}>每次最多可以搜尋過去30天內其中8天。 (以香港時間計算）</Text>
@@ -306,6 +308,13 @@ const AcountRecord = () => {
                     <View style={styles.comDescriptionBox}>
                         <Text style={styles.text}>搜尋時段: {dateRange.replace('-', ' 至 ')}</Text>
                     </View>
+                    <LinearGradient
+                        colors={["#ccc", "#eee"]}
+                        start={{ x: 0.5, y: 0 }}
+                        end={{ x: 0.5, y: 1 }}
+                        style={styles.gradientBox}
+                    />
+
                     <TouchableOpacity style={styles.addButton} onPress={() => setIsModalVisible(true)}>
                         <MaterialIcons name="add" size={20} color="#fff" />
                     </TouchableOpacity>
@@ -394,7 +403,7 @@ const AcountRecord = () => {
 };
 
 const styles = StyleSheet.create({
-    entireContainer: {height: '100%', position: 'relative'},
+    entireContainer: {height: '100%', position: 'relative', backgroundColor: "#eee"},
     headerTop: {height: 8, backgroundColor: '#022f77'},
     topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 10,  },
     text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 15, color: 'black' },
@@ -414,9 +423,9 @@ const styles = StyleSheet.create({
     completeBtnText: { fontFamily: 'NotoSansTC-bold', fontSize: 14, color: 'white', fontWeight: 'bold', marginTop: 5 },
     backBtn: { flexDirection: 'row', alignItems: "center", },
     backText: { color: 'white', fontWeight: 'bold', marginTop: 5, fontSize: 16 },
-    comDescriptionBox: {backgroundColor: "#F6F6F6", paddingHorizontal: 15, paddingVertical: 8, },
-    comContent: {backgroundColor: 'eee', paddingHorizontal: 15, paddingVertical: 10, },
-    tableContainer: { marginBottom: 10, backgroundColor: '#F0F0F0', borderRadius: 10, overflow: 'hidden', width: '100%', maxWidth: 380, alignSelf: 'center', borderWidth: 1, borderColor: '#ddd' },
+    comDescriptionBox: {backgroundColor: "#fff", paddingHorizontal: 15, paddingVertical: 8, },
+    comContent: {backgroundColor: 'eee', paddingHorizontal: 12, paddingVertical: 10, },
+    tableContainer: { marginBottom: 10, backgroundColor: '#F0F0F0', borderRadius: 10, overflow: 'hidden', width: '100%', maxWidth: 380, alignSelf: 'center', borderWidth: 1, borderColor: '#ddd'    },
     row: { flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 5, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#ddd' },
     headerRow: { backgroundColor: '#888', height: 42, paddingVertical: 5, verticalAlign: 'middle' },
     headerText: { width: 130, fontFamily: 'NotoSansTC-Medium', fontWeight: '600', lineHeight: 42, fontSize: 17, color: 'white' },
