@@ -151,7 +151,7 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
   profileTop: {
-    height: 185,
+    height: 192,
     paddingHorizontal: 30,
   },
   profileBalance: {
@@ -164,14 +164,14 @@ const styles = StyleSheet.create({
   eyeIcon: { width: 24, height: 24, resizeMode: 'contain' },
   balanceText: {
     fontFamily: 'NotoSansTC-Medium',
-    lineHeight: 20,
+    lineHeight: 24,
     fontSize: 17,
     color: '#fff',
   },
   balance: {
     color: '#fff',
     fontFamily: 'NotoSansTC-Medium',
-    lineHeight: 36,
+    lineHeight: 40,
     fontSize: 32,
   },
   account: {
@@ -184,7 +184,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 15,
     backgroundColor: 'transparent',
-    marginTop: -60
+    marginTop: -60,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
   profileCenterDiv: {
     width: '100%',
@@ -260,12 +267,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 10,
-    marginTop: 25,
+    marginTop: 32,
     paddingHorizontal: 10,
     paddingVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
   suggestionView: {
     flexDirection: 'row',
@@ -286,7 +300,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 40,
     backgroundColor: '#fff',
-    marginTop: 25,
+    marginTop: 32,
     padding: 12,
     flexDirection: 'row',
     alignItems: 'center',
