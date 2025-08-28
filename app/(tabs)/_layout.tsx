@@ -21,6 +21,7 @@ export default function TabLayout() {
         headerTitleAlign: 'center',
         tabBarStyle: Platform.select({
           ios: { 
+            height: 92,
             position: 'absolute',
             backgroundColor: 'white',
           },
@@ -62,7 +63,7 @@ const tabOptions = (imagePath: string, label: string) => ({
 const styles = StyleSheet.create({
   tabContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 14,
     width: 80,
   },
   icon: {
