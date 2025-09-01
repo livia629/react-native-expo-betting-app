@@ -5,10 +5,12 @@ import { useRouter } from "expo-router";
 
 type Props = {
   title: string;
-  hasBackButton: boolean;
+  hasBackButton?: boolean;
+  hasRightButton?: boolean;
+  onClickRight?: () => void;
 };
 
-export default function CustomHeader({ title, hasBackButton = false }: Props) {
+export default function CustomHeader({ title, hasBackButton = false, hasRightButton = false, onClickRight, }: Props) {
   const router = useRouter();
 
   return (
@@ -25,6 +27,11 @@ export default function CustomHeader({ title, hasBackButton = false }: Props) {
         </TouchableOpacity>
       )}
       <Text style={styles.title}>{title}</Text>
+      {hasRightButton && onClickRight && (
+        <TouchableOpacity onPress={onClickRight} style={styles.rightBtn}>
+          <Text style={styles.backText}>完成</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -54,5 +61,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 0,
     fontSize: 16,
+  },
+
+  rightBtn: {
+    position: "absolute",
+    right: 16,
+    bottom: 18,
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
