@@ -21,9 +21,9 @@ export default function RootLayout() {
   const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({
-      'NotoSansTC-Regular': require('../assets/fonts/NotoSansTC-Regular.ttf'),
-      'NotoSansTC-Bold': require('../assets/fonts/NotoSansTC-Bold.ttf'),
-      'NotoSansTC-Medium': require('../assets/fonts/NotoSansTC-Medium.ttf'),
+    'NotoSansTC-Regular': require('../assets/fonts/NotoSansTC-Regular.ttf'),
+    'NotoSansTC-Bold': require('../assets/fonts/NotoSansTC-Bold.ttf'),
+    'NotoSansTC-Medium': require('../assets/fonts/NotoSansTC-Medium.ttf'),
   });
 
   useEffect(() => {
