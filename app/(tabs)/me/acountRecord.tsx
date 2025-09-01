@@ -51,7 +51,7 @@ export default function AccountRecordScreen() {
                         <Text style={styles.backText}>返回</Text>
                     </TouchableOpacity>
                 ),
-                headerRight: () => null, // Hide "完成" button
+                headerRight: () => null,
             });
         }
     }, [isCompleteScreen, navigation]);
@@ -170,7 +170,6 @@ export default function AccountRecordScreen() {
 
     return (
         <View style={styles.entireContainer}>
-            <View style={styles.headerTop}></View>
             <View style={styles.topContainer}>
                 <Text style={styles.text}>時間: {formatCurrentTime(currentTime)}</Text>
                 <Text style={styles.text}>投注戶口號碼: {account}</Text>
@@ -205,7 +204,7 @@ export default function AccountRecordScreen() {
                         <Text style={styles.boxBtnRightText}>{dateRange}</Text>
                     </TouchableOpacity>
                     <View style={styles.horizonLine}></View>
-                    <TouchableOpacity style={[styles.boxBtn, { marginBottom: 10 }]} onPress={() => setIsTradeTypePickerVisible(true)}>
+                    <TouchableOpacity style={[styles.boxBtn, { marginBottom: 12 }]} onPress={() => setIsTradeTypePickerVisible(true)}>
                         <Text style={styles.boxBtnLeftText}>交易種類</Text>
                         <Text style={styles.boxBtnRightText}>{selectedTradeType}</Text>
                     </TouchableOpacity>
@@ -220,21 +219,21 @@ export default function AccountRecordScreen() {
                     <Modal
                         visible={isTradeTypePickerVisible}
                         transparent
-                        animationType="slide"
+                        animationType="none"
                         onRequestClose={() => setIsTradeTypePickerVisible(false)}
                     >
                         <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' }}>
-                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, padding: 20 }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
-                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>交易種類</Text>
-                                    <TouchableOpacity onPress={() => setIsTradeTypePickerVisible(false)} style={{ position: 'absolute', right: 0, padding: 5 }}>
-                                        <Text style={{ fontSize: 22, color: '#888' }}>×</Text>
+                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingHorizontal: 8, paddingBottom: 42 }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderBottomWidth:0.8, borderBottomColor: '#C0C0C0' }}>
+                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', fontFamily: 'NotoSansTC-Medium', marginBottom:16, marginTop:12 }}>交易種類</Text>
+                                    <TouchableOpacity onPress={() => setIsTradeTypePickerVisible(false)} style={{ position: 'absolute', right: 0, padding: 16,}}>
+                                        <MaterialIcons name="close" size={24} color="black" style={{fontWeight: 'medium'}} />
                                     </TouchableOpacity>
                                 </View>
                                 <Picker
                                     selectedValue={selectedTradeType}
                                     onValueChange={(itemValue) => setSelectedTradeType(itemValue)}
-                                    style={{ width: '100%', marginBottom: 20 }}
+                                    style={{ width: '100%', marginVertical:12 }}
                                 >
                                     <Picker.Item label="所有" value="所有" color='#000' />
                                     <Picker.Item label="賽馬" value="賽馬" color='#000'  />
@@ -242,10 +241,10 @@ export default function AccountRecordScreen() {
                                     <Picker.Item label="六合彩" value="六合彩" color='#000' />
                                 </Picker>
                                 <TouchableOpacity
-                                    style={{ marginTop: 10, backgroundColor: "#022f77", borderRadius: 10, padding: 12, alignItems: 'center' }}
+                                    style={{backgroundColor: "#01326D", borderRadius: 21, height: 42, alignItems: 'center', justifyContent: 'center' }}
                                     onPress={() => setIsTradeTypePickerVisible(false)}
                                 >
-                                    <Text style={{ color: "white", fontSize: 16 }}>完成</Text>
+                                    <Text style={{ color: "white", fontSize: 16, fontFamily: 'NotoSansTC-Medium'  }}>完成</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -254,30 +253,30 @@ export default function AccountRecordScreen() {
                     <Modal
                         visible={isTypePickerVisible}
                         transparent
-                        animationType="slide"
+                        animationType="none"
                         onRequestClose={() => setIsTypePickerVisible(false)}
                     >
                         <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' }}>
-                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, padding: 20 }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
-                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>顯示種類</Text>
-                                    <TouchableOpacity onPress={() => setIsTypePickerVisible(false)} style={{ position: 'absolute', right: 0, padding: 5 }}>
-                                        <Text style={{ fontSize: 22, color: '#888' }}>×</Text>
+                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingHorizontal: 8, paddingBottom: 42 }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderBottomWidth:0.8, borderBottomColor: '#C0C0C0' }}>
+                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', fontFamily: 'NotoSansTC-Medium', marginBottom:16, marginTop:12 }}>顯示種類</Text>
+                                    <TouchableOpacity onPress={() => setIsTypePickerVisible(false)} style={{ position: 'absolute', right: 0, padding: 16,}}>
+                                        <MaterialIcons name="close" size={24} color="black" style={{fontWeight: 'medium'}} />
                                     </TouchableOpacity>
                                 </View>
                                 <Picker
-                                    selectedValue={selectedType}
+                                    selectedValue={selectedTradeType}
                                     onValueChange={(itemValue) => setSelectedType(itemValue)}
-                                    style={{ width: '100%', marginBottom: 20 }}
+                                    style={{ width: '100%', marginVertical:12 }}
                                 >
                                     <Picker.Item label="所有" value="所有" color='#000' />
                                     <Picker.Item label="已派彩 / 已退款 / 已扣扣之交易" value="已派彩 / 已退款 / 已扣扣之交易"  color='#000'  />
                                 </Picker>
                                 <TouchableOpacity
-                                    style={{ marginTop: 10, backgroundColor: "#022f77", borderRadius: 10, padding: 12, alignItems: 'center' }}
+                                    style={{backgroundColor: "#01326D", borderRadius: 21, height: 42, alignItems: 'center', justifyContent: 'center' }}
                                     onPress={() => setIsTypePickerVisible(false)}
                                 >
-                                    <Text style={{ color: "white", fontSize: 16 }}>完成</Text>
+                                    <Text style={{ color: "white", fontSize: 16, fontFamily: 'NotoSansTC-Medium'  }}>完成</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -375,21 +374,20 @@ export default function AccountRecordScreen() {
 
 const styles = StyleSheet.create({
     entireContainer: {height: '100%', position: 'relative', backgroundColor: "#eee"},
-    headerTop: {height: 8, backgroundColor: '#022f77'},
-    topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 10,  },
-    text: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 15, color: 'black' },
-    destext: { fontFamily: 'NotoSansTC-Regular', lineHeight: 20, fontSize: 15, color: 'black' },
-    bottomContainer: { backgroundColor: '#eee', paddingHorizontal: 15, paddingVertical: 8,   },
-    dateBtns: { flexDirection: 'row', alignItems: 'center', marginTop: 10, marginBottom: 15, gap: 10 },
-    dateBtn: { borderColor: '#022f77', borderWidth: 1, borderRadius: 20, paddingHorizontal: 16, paddingVertical: 3 },
-    dateBtnText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#022f77' },
-    selectedDateBtn: { backgroundColor: '#022f77' },
+    topContainer: { backgroundColor: '#fff', paddingHorizontal: 15, paddingVertical: 8,  },
+    text: { fontFamily: 'NotoSansTC-Regular', lineHeight: 19, fontSize: 14, color: 'black' },
+    destext: { fontFamily: 'NotoSansTC-Regular', fontSize: 14, color: 'black', marginTop:2 },
+    bottomContainer: { backgroundColor: '#F0F0F0', paddingHorizontal: 12,  },
+    dateBtns: { flexDirection: 'row', alignItems: 'center', marginTop: 14, marginBottom: 10, gap: 10 },
+    dateBtn: { borderColor: '#01326D', borderWidth: 1, borderRadius: 20, paddingHorizontal: 18, paddingTop: 2, paddingBottom:4, backgroundColor: 'white' },
+    dateBtnText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 14, color: '#01326D' },
+    selectedDateBtn: { backgroundColor: '#01326D' },
     selectedDateBtnText: { color: 'white' },
-    boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', paddingVertical: 10, paddingHorizontal: 15, borderColor: '#888', borderWidth: 1.3, borderRadius: 5 },
-    boxBtnLeftText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontSize: 18, color: 'black' },
-    boxBtnRightText: { fontFamily: 'NotoSansTC-bold', lineHeight: 24, fontWeight: 'bold', fontSize: 18, color: 'black' },
-    horizonLine: { borderBottomWidth: 1, borderColor: "#888", height: 25, marginBottom: 25 },
-    send: { width: '100%', backgroundColor: '#022f77', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
+    boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', paddingVertical: 8, paddingHorizontal: 15, borderColor: '#A0A0A0', borderWidth: 1.2, borderRadius: 5 },
+    boxBtnLeftText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontSize: 16, color: 'black' },
+    boxBtnRightText: { fontFamily: 'NotoSansTC-bold', lineHeight: 24, fontWeight: 'bold', fontSize: 16, color: 'black' },
+    horizonLine: { borderBottomWidth: 0.5, borderColor: "#A0A0A0", height: 26, marginBottom: 25 },
+    send: { width: '100%', backgroundColor: '#01326D', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'}, 
     sendText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#fff' },
     completeBtnText: { fontFamily: 'NotoSansTC-bold', fontSize: 14, color: 'white', fontWeight: 'bold', marginTop: 5 },
     backBtn: { flexDirection: 'row', alignItems: "center", },
@@ -442,7 +440,7 @@ const styles = StyleSheet.create({
     modalTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
     input: { borderWidth: 1, borderColor: '#ddd', padding: 10, marginBottom: 10, borderRadius: 5 },
     modalButtons: { flexDirection: 'row', justifyContent: 'space-between' },
-    modalButton: { padding: 10, backgroundColor: '#022f77', borderRadius: 5 },
+    modalButton: { padding: 10, backgroundColor: '#01326D', borderRadius: 5 },
     modalButtonText: { color: 'white' },
     bottomTabs: {
         position: 'absolute',

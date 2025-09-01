@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   backText: {
     color: "white",
     fontWeight: "bold",
-    marginLeft: 4,
+    marginLeft: 0,
     fontSize: 16,
   },
 });

@@ -55,8 +55,8 @@ export default function DatePickerScreen() {
                     allowRangeSelection={true}
                     allowBackwardRangeSelect={true} // Allows selecting end date before start date
                     showDayStragglers={true} // Ensures previous month's days are clickable
-                    todayBackgroundColor="#022f77"
-                    selectedDayColor="#022f77"
+                    todayBackgroundColor="#01326D"
+                    selectedDayColor="#01326D"
                     selectedDayTextColor="#fff"
                     selectedDayStyle={styles.selectedDay} // Apply custom circle styling
                     minDate={new Date(2000, 0, 1)} // Ensure old dates are allowed
@@ -118,7 +118,7 @@ export default function DatePickerScreen() {
 }
 
 const styles = StyleSheet.create({
-    headerTop: {height: 8, backgroundColor: '#022f77'},
+    headerTop: {height: 8, backgroundColor: '#01326D'},
     container: {padding: 15, backgroundColor: 'white', height: '100%'},
     topText:{ marginBottom: 30 },
     dateText: {
@@ -126,11 +126,11 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#022f77',
+        color: '#01326D',
     },
     introText: { fontFamily: 'NotoSansTC-Regular', lineHeight: 20, fontSize: 14, color: 'black', marginTop: 5 },
     selectedDay: {
-        backgroundColor: '#022f77',
+        backgroundColor: '#01326D',
         borderRadius: 50,
         width: 40,
         height: 40,
@@ -139,9 +139,9 @@ const styles = StyleSheet.create({
     },
     horizonLine: { marginTop:15, borderTopWidth: 1, borderTopColor: '#bbb'},
     buttons: { marginTop: -15, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'},
-    resetButton: { width: '30%', borderColor: '#022f77', borderWidth: 1, borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
-    okButton: { width: '66%', backgroundColor: '#022f77', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
-    resetButtonText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#022f77', },
+    resetButton: { width: '30%', borderColor: '#01326D', borderWidth: 1, borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
+    okButton: { width: '66%', backgroundColor: '#01326D', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
+    resetButtonText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#01326D', },
     okButtonText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#fff', },
     bottomTabs: {
         position: 'absolute',
