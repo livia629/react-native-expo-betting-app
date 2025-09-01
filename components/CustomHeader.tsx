@@ -32,7 +32,7 @@ export default function CustomHeader({ title, hasBackButton = false }: Props) {
 const styles = StyleSheet.create({
   container: {
     height: 108,
-    backgroundColor: "#022f77",
+    backgroundColor: "#01326D",
     justifyContent: "flex-end",
     alignItems: "center",
     paddingBottom: 14,
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
   },
   backBtn: {
     position: "absolute",
-    left: 16,
-    bottom: 4,
+    left: 8,
+    bottom: 12,
     flexDirection: "row",
     alignItems: "center",
   },

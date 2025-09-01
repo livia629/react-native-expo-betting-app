@@ -64,9 +64,9 @@ export default function ProfileScreen() {
   };
 
   return (
-    <>
+    <View style={{backgroundColor: '#F0F0F0'}}>
           <ImageBackground 
-              source={require('../../../assets/images/圖片_20250205214818.jpg')} // Replace with your actual image path
+              source={require('../../../assets/images/圖片_20250205214818.jpg')} 
               style={styles.profileTop}
               resizeMode="cover" 
           >
@@ -74,7 +74,7 @@ export default function ProfileScreen() {
                 <Text style={styles.balanceText}>結餘</Text>
                 <TouchableOpacity
                     style={styles.profileButton}
-                    onPress={() => setIsVisible(!isVisible)} // Toggle visibility
+                    onPress={() => setIsVisible(!isVisible)}
                 >
                     {isVisible ? 
                       <Image source={require('../../../assets/images/圖片_20250201123414.png')} style={styles.eyeIcon} /> : 
@@ -82,7 +82,7 @@ export default function ProfileScreen() {
                     }
                 </TouchableOpacity>
             </View>
-            <Text style={styles.balance}>$ {isVisible ? '*****' : balance}</Text>
+            <Text style={styles.balance}>${isVisible ? ' *****' : balance}</Text>
             <Text style={styles.account}>投注戶口號碼: {account}</Text>
         </ImageBackground>
         <View style={styles.profileCenter}>
@@ -90,7 +90,7 @@ export default function ProfileScreen() {
                 <TouchableOpacity style={styles.profileCenterBox}>
                   <Image 
                     source={require('../../../assets/images/圖片_20250201015446.png')} 
-                    style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
+                    style={{ width: 64, height: 64, resizeMode: 'contain', borderRadius: 32 }} 
                   />
                   <Text style={styles.myCouponsText}>轉賬服務</Text>
                 </TouchableOpacity>
@@ -120,7 +120,7 @@ export default function ProfileScreen() {
                 />
                 <Text style={styles.myCouponsText}>我的優惠券</Text>
             </View>
-            <View style={{...styles.myCouponsBox, marginLeft: 16}}>
+            <View style={{...styles.myCouponsBox, marginLeft: 12}}>
                 <Image 
                   source={require('../../../assets/images/圖片_20250201015439.png')} 
                   style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
@@ -145,66 +145,76 @@ export default function ProfileScreen() {
                 <Text style={styles.logoutText}>登出</Text>
             </TouchableOpacity>
         </View>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   profileTop: {
-    height: 192,
-    paddingHorizontal: 30,
+    height: 177,
+    paddingHorizontal: 24,
   },
   profileBalance: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  profileButton: {
-    padding: 10,
-  },
-  eyeIcon: { width: 24, height: 24, resizeMode: 'contain' },
   balanceText: {
-    fontFamily: 'NotoSansTC-Medium',
-    lineHeight: 24,
+    fontFamily: 'NotoSansTC-Bold',
     fontSize: 17,
-    color: '#fff',
+    color: 'white',
   },
+  profileButton: {
+    paddingHorizontal: 5,
+    paddingTop: 10,
+    paddingBottom: 8
+  },
+  eyeIcon: { width: 22, height: 22, resizeMode: 'contain'},
+  
   balance: {
+    color: 'white',
+    fontFamily: 'NotoSansTC-Medium',
+    fontSize: 32,
+    marginTop: -3,
+  },
+  balance1: {
     color: '#fff',
     fontFamily: 'NotoSansTC-Medium',
-    lineHeight: 40,
     fontSize: 32,
+    textAlignVertical: 'center'
   },
   account: {
-    fontFamily: 'NotoSansTC-Medium',
-    lineHeight: 40,
-    fontSize: 15,
+    fontFamily: 'NotoSansTC-Bold',
+    marginTop: 3,
+    fontSize: 14,
     color: '#fff',
   },
   profileCenter: {
-    flexDirection: 'row',
-    marginHorizontal: 15,
+    marginHorizontal: 12,
     backgroundColor: 'transparent',
-    marginTop: -60,
+    marginTop: -57,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
   },
+
   profileCenterDiv: {
     width: '100%',
     borderWidth: 0,
     borderRadius: 10,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     elevation: 10,
     paddingHorizontal: 0,
-    paddingVertical: 14,
+    paddingTop:12,
+    paddingBottom: 13,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
   },
+
   profileCenterBox: {
     width: '33%',
     alignItems: 'center',
@@ -213,18 +223,17 @@ const styles = StyleSheet.create({
   iconBackground: {
     backgroundColor: 'black', 
     padding: 12,
-    borderRadius: 50,
+    borderRadius: 48,
   },
   profileBottom: {
     height: '100%',
-    paddingHorizontal: 15,
-    marginTop: 15
+    paddingHorizontal: 12,
+    marginTop: 13
   },
   myHkjc: {
-    fontFamily: 'NotoSansTC-Medium',
-    lineHeight: 30,
-    fontSize: 20,
-    color: '#000',
+    fontFamily: 'NotoSansTC-Regular',
+    fontSize: 18,
+    color: 'black',
   },
   myCouponsView: {
     flexDirection: 'row'
@@ -240,11 +249,12 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     marginTop: 10,
     paddingHorizontal: 15,
-    paddingVertical: 12,
+    paddingTop: 12,
+    paddingBottom: 8,
     gap: 12
   },
   iconContainer: {
@@ -256,9 +266,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   myCouponsText: {
-    fontFamily: 'NotoSansTC-Medium',
-    lineHeight: 25,
-    fontSize: 18,
+    fontFamily: 'NotoSansTC-Regular',
+    lineHeight: 22,
+    fontSize: 17,
     color: '#555'
   },
   suggestion: {
@@ -267,9 +277,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 10,
-    marginTop: 32,
+    marginTop: 24,
     paddingHorizontal: 10,
-    paddingVertical: 8,
+    paddingVertical: 7,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -278,16 +288,15 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   suggestionView: {
     flexDirection: 'row',
   },
   suggestionText: {
-    fontFamily: 'NotoSansTC-Medium',
-    lineHeight: 30,
-    fontSize: 18,
+    fontFamily: 'NotoSansTC-Regular',
+    fontSize: 17,
     color: '#000',
     marginLeft: 10,
   },
@@ -300,7 +309,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 40,
     backgroundColor: '#fff',
-    marginTop: 32,
+    marginTop: 40,
     padding: 12,
     flexDirection: 'row',
     alignItems: 'center',

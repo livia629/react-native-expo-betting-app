@@ -15,17 +15,19 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { backgroundColor: '#022f77', height: 108 },
+        headerStyle: { backgroundColor: '#01326D', height: 108 },
         headerTintColor: 'white',
         headerTitleStyle: { fontSize: 20, fontFamily: 'NotoSansTC-Bold' },
         headerTitleAlign: 'center',
         tabBarStyle: Platform.select({
           ios: { 
-            height: 92,
+            height: 80,
             position: 'absolute',
             backgroundColor: 'white',
+            borderWidth: 0
           },
           default: {
+            borderWidth: 0,
             backgroundColor: 'white',
           },
         }),
@@ -63,7 +65,7 @@ const tabOptions = (imagePath: string, label: string) => ({
 const styles = StyleSheet.create({
   tabContainer: {
     alignItems: 'center',
-    marginTop: 14,
+    marginTop: 12,
     width: 80,
   },
   icon: {
