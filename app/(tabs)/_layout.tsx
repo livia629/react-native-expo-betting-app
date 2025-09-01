@@ -10,7 +10,7 @@ export default function TabLayout() {
     'NotoSansTC-Medium': require('../../assets/fonts/NotoSansTC-Medium.ttf'),
   });
 
-  if (!fontsLoaded) return null; // Prevent rendering before fonts are loaded
+  if (!fontsLoaded) return null;
 
   return (
     <Tabs
@@ -36,7 +36,7 @@ export default function TabLayout() {
       <Tabs.Screen name="betslip" options={{ ...tabOptions('圖片_20250201015430.png', '投注區'), title: '投注區' }} />
       <Tabs.Screen name="ewallet" options={{ ...tabOptions('圖片_20250201015427.png', '電子錢包'), title: '電子錢包' }} />
       <Tabs.Screen name="more" options={{ ...tabOptions('圖片_20250201015418.png', '更多'), title: '更多' }} />
-      <Tabs.Screen name="me" options={{ ...tabOptions('圖片_20250201015434.png', '我'), title: '我' }} />
+      <Tabs.Screen name="me" options={{ ...tabOptions('圖片_20250201015434.png', '我'), title: '我', headerShown: true }} />
     </Tabs>
   );
 }

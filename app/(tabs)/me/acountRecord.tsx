@@ -14,7 +14,7 @@ type RouteParams = {
     balance: string;
 };
 
-const AcountRecord = () => {
+export default function AccountRecordScreen() {
     const router = useRouter();
     const route = useRoute<RouteProp<{ params: RouteParams }>>();
     const navigation = useNavigation();
@@ -23,9 +23,9 @@ const AcountRecord = () => {
     const { currentTime, account, balance } = route.params;
     
     const [fontsLoaded] = useFonts({
-        'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
-        'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
-        'NotoSansTC-Medium': require('../../assets/fonts/NotoSansTC-Medium.ttf'),
+        'NotoSansTC-Regular': require('../../../assets/fonts/NotoSansTC-Regular.ttf'),
+        'NotoSansTC-Bold': require('../../../assets/fonts/NotoSansTC-Bold.ttf'),
+        'NotoSansTC-Medium': require('../../../assets/fonts/NotoSansTC-Medium.ttf'),
     });
 
     const [selectedButton, setSelectedButton] = useState<string | null>('今日');
@@ -161,25 +161,6 @@ const AcountRecord = () => {
         setShowShareButton("No");
     };
 
-    const imageMap: { [key: string]: any } = {
-      '圖片_20250201015452.png': require('../../assets/images/圖片_20250201015452.png'),
-      '圖片_20250201015432.png': require('../../assets/images/圖片_20250201015432.png'),
-      '圖片_20250201015430.png': require('../../assets/images/圖片_20250201015430.png'),
-      '圖片_20250201015427.png': require('../../assets/images/圖片_20250201015427.png'),
-      '圖片_20250201015418.png': require('../../assets/images/圖片_20250201015418.png'),
-      '圖片_20250201015434.png': require('../../assets/images/圖片_20250201015434.png'),
-    };
-    
-    const tabOptions = (imagePath: string, label: string) => ({
-      tabBarLabel: "",
-      tabBarIcon: ({ focused }: { focused: boolean }) => (
-        <View style={styles.tabContainer}>
-          <Image source={imageMap[imagePath]} style={[styles.icon, focused && styles.focusedTab]} />
-          <Text style={styles.tabText}>{label}</Text>
-        </View>
-      ),
-    });
-
     const [isTradeTypePickerVisible, setIsTradeTypePickerVisible] = useState(false);
     const [selectedTradeType, setSelectedTradeType] = useState("所有");
 
@@ -219,7 +200,7 @@ const AcountRecord = () => {
                             </TouchableOpacity>
                         ))}
                     </View>
-                    <TouchableOpacity style={styles.boxBtn} onPress={() => router.push('/routers/DatePicker')}>
+                    <TouchableOpacity style={styles.boxBtn} onPress={() => router.push("/(tabs)/me/datePicker")}>
                         <Text style={styles.boxBtnLeftText}>時段</Text>
                         <Text style={styles.boxBtnRightText}>{dateRange}</Text>
                     </TouchableOpacity>
@@ -388,16 +369,6 @@ const AcountRecord = () => {
                 </>
             )}
 
-            <View style={styles.bottomTabs}>
-                <View style={styles.bottomTabAlign}>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015452.png', '主頁').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015432.png', '馬上發現').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015430.png', '投注區').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015427.png', '電子錢包').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015418.png', '更多').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015434.png', '我').tabBarIcon({ focused: false })}</TouchableOpacity>
-                </View>
-            </View>
         </View>
     );
 };
@@ -515,5 +486,3 @@ const styles = StyleSheet.create({
     picker: { height: 50, width: "100%", marginBottom: 10 },
     label: { fontSize: 16, fontWeight: "bold", marginTop: 10, marginBottom: 5 },
 });
-
-export default AcountRecord;

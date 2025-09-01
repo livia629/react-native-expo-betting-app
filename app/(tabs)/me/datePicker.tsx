@@ -10,7 +10,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 // Set RTL to false for Chinese layout
 I18nManager.forceRTL(false);
 
-export default function App() {
+export default function DatePickerScreen() {
     const router = useRouter();
     const today = new Date();
     const [selectedStartDate, setSelectedStartDate] = useState<Date | null>(null);
@@ -40,24 +40,6 @@ export default function App() {
         }
     }, [selectedStartDate, selectedEndDate]);
 
-    const imageMap: { [key: string]: any } = {
-          '圖片_20250201015452.png': require('../../assets/images/圖片_20250201015452.png'),
-          '圖片_20250201015432.png': require('../../assets/images/圖片_20250201015432.png'),
-          '圖片_20250201015430.png': require('../../assets/images/圖片_20250201015430.png'),
-          '圖片_20250201015427.png': require('../../assets/images/圖片_20250201015427.png'),
-          '圖片_20250201015418.png': require('../../assets/images/圖片_20250201015418.png'),
-          '圖片_20250201015434.png': require('../../assets/images/圖片_20250201015434.png'),
-        };
-        
-        const tabOptions = (imagePath: string, label: string) => ({
-            tabBarLabel: "",
-            tabBarIcon: ({ focused }: { focused: boolean }) => (
-                <View style={styles.tabContainer}>
-                <Image source={imageMap[imagePath]} style={[styles.icon, focused && styles.focusedTab]} />
-                <Text style={styles.tabText}>{label}</Text>
-                </View>
-            ),
-        });
 
     return (
         <>
@@ -130,16 +112,7 @@ export default function App() {
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={styles.bottomTabs}>
-                <View style={styles.bottomTabAlign}>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015452.png', '主頁').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015432.png', '馬上發現').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015430.png', '投注區').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015427.png', '電子錢包').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015418.png', '更多').tabBarIcon({ focused: false })}</TouchableOpacity>
-                    <TouchableOpacity>{tabOptions('圖片_20250201015434.png', '我').tabBarIcon({ focused: false })}</TouchableOpacity>
-                </View>
-            </View>
+
         </>
     );
 }

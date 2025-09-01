@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
 
-const EditProfile = () => {
+export default function EditProfileScreen() {
   const [balance, setBalance] = useState('');
   const [account, setAccount] = useState('');
   const router = useRouter();
@@ -93,5 +93,3 @@ const styles = StyleSheet.create({
   },
   buttonText: { color: 'white', fontSize: 16, fontWeight: 'bold' },
 });
-
-export default EditProfile;

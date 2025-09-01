@@ -5,16 +5,16 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
-import CustomText from '../CustomText';
+import CustomText from '../../../components/CustomText';
 
-const Profile = () => {
+export default function ProfileScreen() {
   const [isVisible, setIsVisible] = useState(true); 
   const [balance, setBalance] = useState(''); 
   const [account, setAccount] = useState('');
   const [fontsLoaded] = useFonts({
-    'NotoSansTC-Regular': require('../../assets/fonts/NotoSansTC-Regular.ttf'),
-    'NotoSansTC-Bold': require('../../assets/fonts/NotoSansTC-Bold.ttf'),
-    'NotoSansTC-Medium': require('../../assets/fonts/NotoSansTC-Medium.ttf'),
+    'NotoSansTC-Regular': require('../../../assets/fonts/NotoSansTC-Regular.ttf'),
+    'NotoSansTC-Bold': require('../../../assets/fonts/NotoSansTC-Bold.ttf'),
+    'NotoSansTC-Medium': require('../../../assets/fonts/NotoSansTC-Medium.ttf'),
   });
   const router = useRouter();
   const [savedBalance, setSavedBalance] = useState('');
@@ -54,7 +54,7 @@ const Profile = () => {
     });
     const formattedTime = currentTime.replace(/\/0/g, '/').replace(/, /g, ' ').replace(/:/g, ':').trim();
     router.push({
-      pathname: '/routers/AcountRecord',
+      pathname: "/(tabs)/me/acountRecord",
       params: {
         currentTime: formattedTime,
         account: savedAccount,
@@ -66,7 +66,7 @@ const Profile = () => {
   return (
     <>
           <ImageBackground 
-              source={require('../../assets/images/圖片_20250205214818.jpg')} // Replace with your actual image path
+              source={require('../../../assets/images/圖片_20250205214818.jpg')} // Replace with your actual image path
               style={styles.profileTop}
               resizeMode="cover" 
           >
@@ -77,8 +77,8 @@ const Profile = () => {
                     onPress={() => setIsVisible(!isVisible)} // Toggle visibility
                 >
                     {isVisible ? 
-                      <Image source={require('../../assets/images/圖片_20250201123414.png')} style={styles.eyeIcon} /> : 
-                      <Image source={require('../../assets/images/圖片_20250201015444.png')} style={styles.eyeIcon} />
+                      <Image source={require('../../../assets/images/圖片_20250201123414.png')} style={styles.eyeIcon} /> : 
+                      <Image source={require('../../../assets/images/圖片_20250201015444.png')} style={styles.eyeIcon} />
                     }
                 </TouchableOpacity>
             </View>
@@ -89,21 +89,21 @@ const Profile = () => {
             <View style={styles.profileCenterDiv}>
                 <TouchableOpacity style={styles.profileCenterBox}>
                   <Image 
-                    source={require('../../assets/images/圖片_20250201015446.png')} 
+                    source={require('../../../assets/images/圖片_20250201015446.png')} 
                     style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
                   />
                   <Text style={styles.myCouponsText}>轉賬服務</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.profileCenterBox}>
                   <Image 
-                    source={require('../../assets/images/圖片_20250201015442.png')} 
+                    source={require('../../../assets/images/圖片_20250201015442.png')} 
                     style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
                   />
                   <Text style={styles.myCouponsText}>是次交易紀錄</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.profileCenterBox} onPress={handleAccountRecordPress}>
                   <Image 
-                    source={require('../../assets/images/圖片_20250201015440.png')} 
+                    source={require('../../../assets/images/圖片_20250201015440.png')} 
                     style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
                   />
                   <Text style={styles.myCouponsText}>戶口紀錄</Text>
@@ -115,25 +115,25 @@ const Profile = () => {
         <View style={styles.myCouponsView}>
             <View style={styles.myCouponsBox}>
                 <Image 
-                  source={require('../../assets/images/圖片_20250201015438.png')} 
+                  source={require('../../../assets/images/圖片_20250201015438.png')} 
                   style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
                 />
                 <Text style={styles.myCouponsText}>我的優惠券</Text>
             </View>
             <View style={{...styles.myCouponsBox, marginLeft: 16}}>
                 <Image 
-                  source={require('../../assets/images/圖片_20250201015439.png')} 
+                  source={require('../../../assets/images/圖片_20250201015439.png')} 
                   style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
                 />
                 <Text style={styles.myCouponsText}>我的預訂</Text>
             </View>
         </View>  
             
-            <TouchableOpacity onPress={() => router.push('/routers/EditProfile')}>
+            <TouchableOpacity onPress={() => router.push("/(tabs)/me/editProfile")}>
               <View style={styles.suggestion}>
                   <View style={styles.suggestionView}>
                       <Image 
-                        source={require('../../assets/images/圖片_20250201015436.png')} 
+                        source={require('../../../assets/images/圖片_20250201015436.png')} 
                         style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
                       />
                       <Text style={styles.suggestionText}>意見/建議</Text>
@@ -313,5 +313,3 @@ const styles = StyleSheet.create({
     color: '#022f77',
   }
 });
-
-export default Profile;
