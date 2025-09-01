@@ -1,10 +1,23 @@
-// app/(tabs)/discover.tsx
-import { View, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text
+} from 'react-native';
 
 export default function DiscoverScreen() {
   return (
-    <View>
+    <View style={styles.page}>
       <Text>This is Discover Page</Text>
     </View>
   );
 }
+  
+const styles = StyleSheet.create({
+  page: {
+    position:'relative',
+    flex: 1,
+    minHeight:'100%',
+    backgroundColor: '#eee',
+  }
+});
+

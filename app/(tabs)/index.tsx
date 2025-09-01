@@ -7,7 +7,7 @@ import {
 export default function HomeScreen() {
   return (
     <View style={styles.page}>
-        <Text>This is Home Page</Text>
+      <Text>This is Home Page</Text>
     </View>
   );
 }
