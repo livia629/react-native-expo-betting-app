@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     },
     horizonLine: { marginTop:15, borderTopWidth: 1, borderTopColor: '#bbb'},
     buttons: { marginTop: -15, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'},
-    resetButton: { width: '30%', borderColor: '#01326D', borderWidth: 1, borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
+    resetButton: { width: '30%', borderColor: '#01326D', borderWidth: 1, borderRadius: 21, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center', height:42},
     okButton: { width: '66%', backgroundColor: '#01326D', borderRadius: 20, marginTop: 25, padding: 12, flexDirection: 'row', alignItems: 'center', justifyContent:'center'},
     resetButtonText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#01326D', },
     okButtonText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#fff', },
