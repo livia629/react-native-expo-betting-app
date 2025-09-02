@@ -230,9 +230,9 @@ export default function AccountRecordScreen() {
                         onRequestClose={() => setIsTradeTypePickerVisible(false)}
                     >
                         <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' }}>
-                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingHorizontal: 8, paddingBottom: 42 }}>
+                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingHorizontal: 8, paddingBottom: 40 }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderBottomWidth:0.8, borderBottomColor: '#C0C0C0' }}>
-                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', fontFamily: 'NotoSansTC-Medium', marginBottom:16, marginTop:12 }}>交易種類</Text>
+                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', fontFamily: 'NotoSansTC-Bold', marginBottom:14, marginTop:12 }}>交易種類</Text>
                                     <TouchableOpacity onPress={() => setIsTradeTypePickerVisible(false)} style={{ position: 'absolute', right: 0, padding: 16,}}>
                                         <MaterialIcons name="close" size={24} color="black" style={{fontWeight: 'medium'}} />
                                     </TouchableOpacity>
@@ -240,7 +240,7 @@ export default function AccountRecordScreen() {
                                 <Picker
                                     selectedValue={selectedTradeType}
                                     onValueChange={(itemValue) => setSelectedTradeType(itemValue)}
-                                    style={{ width: '100%', marginVertical:12 }}
+                                    style={{ width: '100%', marginVertical:14 }}
                                 >
                                     <Picker.Item label="所有" value="所有" color='#000' />
                                     <Picker.Item label="賽馬" value="賽馬" color='#000'  />
@@ -248,7 +248,7 @@ export default function AccountRecordScreen() {
                                     <Picker.Item label="六合彩" value="六合彩" color='#000' />
                                 </Picker>
                                 <TouchableOpacity
-                                    style={{backgroundColor: "#01326D", borderRadius: 21, height: 42, alignItems: 'center', justifyContent: 'center' }}
+                                    style={{backgroundColor: "#01326D", borderRadius: 20, height: 40, alignItems: 'center', justifyContent: 'center' }}
                                     onPress={() => setIsTradeTypePickerVisible(false)}
                                 >
                                     <Text style={{ color: "white", fontSize: 16, fontFamily: 'NotoSansTC-Medium'  }}>完成</Text>
@@ -264,9 +264,9 @@ export default function AccountRecordScreen() {
                         onRequestClose={() => setIsTypePickerVisible(false)}
                     >
                         <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' }}>
-                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingHorizontal: 8, paddingBottom: 42 }}>
+                            <View style={{ backgroundColor: 'white', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingHorizontal: 8, paddingBottom: 40 }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderBottomWidth:0.8, borderBottomColor: '#C0C0C0' }}>
-                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', fontFamily: 'NotoSansTC-Medium', marginBottom:16, marginTop:12 }}>顯示種類</Text>
+                                    <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', fontFamily: 'NotoSansTC-Bold', marginBottom:14, marginTop:12 }}>顯示種類</Text>
                                     <TouchableOpacity onPress={() => setIsTypePickerVisible(false)} style={{ position: 'absolute', right: 0, padding: 16,}}>
                                         <MaterialIcons name="close" size={24} color="black" style={{fontWeight: 'medium'}} />
                                     </TouchableOpacity>
@@ -274,8 +274,8 @@ export default function AccountRecordScreen() {
                                 <Picker
                                     selectedValue={selectedTradeType}
                                     onValueChange={(itemValue) => setSelectedType(itemValue)}
-                                    style={{ width: '100%', marginVertical:12 }}
-                                >
+                                    style={{ width: '100%', marginVertical:14 }}
+                                >      
                                     <Picker.Item label="所有" value="所有" color='#000' />
                                     <Picker.Item label="已派彩 / 已退款 / 已扣扣之交易" value="已派彩 / 已退款 / 已扣扣之交易"  color='#000'  />
                                 </Picker>
@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
     boxBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', paddingTop: 8, paddingBottom: 8, paddingHorizontal: 15, borderColor: '#A0A0A0', borderWidth: 1.2, borderRadius: 5 },
     boxBtnLeftText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 24, fontSize: 16, color: 'black' },
     boxBtnRightText: { fontFamily: 'NotoSansTC-bold', lineHeight: 24, fontWeight: 'bold', fontSize: 16, color: 'black' },
-    horizonLine: { borderBottomWidth: 0.5, borderColor: "#A0A0A0", height: 26, marginBottom: 25 },
+    horizonLine: { borderBottomWidth: 0.5, borderColor: "#A0A0A0", height: 26, marginBottom: 26 },
     send: { width: '100%', backgroundColor: '#01326D', borderRadius: 20, marginTop: 28, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent:'center'}, 
     sendText: { fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: '#fff' },
     completeBtnText: { fontFamily: 'NotoSansTC-bold', fontSize: 14, color: 'white', fontWeight: 'bold', marginTop: 5 },
