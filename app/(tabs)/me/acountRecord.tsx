@@ -240,7 +240,8 @@ export default function AccountRecordScreen() {
                                 <Picker
                                     selectedValue={selectedTradeType}
                                     onValueChange={(itemValue) => setSelectedTradeType(itemValue)}
-                                    style={{ width: '100%', marginVertical:14 }}
+                                    style={{ width: '100%', marginVertical:14}}
+                                    itemStyle={{ fontFamily: 'NotoSansTC-Bold', fontSize: 16}}
                                 >
                                     <Picker.Item label="所有" value="所有" color='#000' />
                                     <Picker.Item label="賽馬" value="賽馬" color='#000'  />
@@ -275,6 +276,7 @@ export default function AccountRecordScreen() {
                                     selectedValue={selectedTradeType}
                                     onValueChange={(itemValue) => setSelectedType(itemValue)}
                                     style={{ width: '100%', marginVertical:14 }}
+                                    itemStyle={{ fontFamily: 'NotoSansTC-Bold', fontSize: 16}}
                                 >      
                                     <Picker.Item label="所有" value="所有" color='#000' />
                                     <Picker.Item label="已派彩 / 已退款 / 已扣扣之交易" value="已派彩 / 已退款 / 已扣扣之交易"  color='#000'  />
@@ -332,7 +334,7 @@ export default function AccountRecordScreen() {
                         </ScrollView>
                         
                         
-                        <Modal visible={isModalVisible} transparent={true} animationType="slide">
+                        <Modal visible={isModalVisible} transparent={true} animationType="none">
                             <View style={styles.modalContainer}>
                                 <View style={styles.modalContent}>
                                     <Text style={styles.modalTitle}>新增記錄</Text>
@@ -403,7 +405,7 @@ const styles = StyleSheet.create({
     comContent: {backgroundColor: 'eee', paddingHorizontal: 12, paddingVertical: 10, },
     tableContainer: { marginBottom: 10, backgroundColor: '#F0F0F0', borderRadius: 10, overflow: 'hidden', width: '100%', maxWidth: 380, alignSelf: 'center', borderWidth: 1, borderColor: '#ddd'    },
     row: { flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 5, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#ddd' },
-    headerRow: { backgroundColor: '#888', height: 42, paddingVertical: 5, verticalAlign: 'middle' },
+    headerRow: { backgroundColor: '#888', height: 42, paddingTop:  0},
     headerText: { width: 130, fontFamily: 'NotoSansTC-Medium', fontWeight: '600', lineHeight: 42, fontSize: 17, color: 'white' },
     headerValueText: { flex: 1, flexWrap: 'wrap', paddingLeft: 15, fontFamily: 'NotoSansTC-Medium', lineHeight: 40, fontSize: 16, color: 'white' },
     cellText: { paddingVertical: 5, width: 130, borderRightColor: '#ddd', borderRightWidth: 1, fontFamily: 'NotoSansTC-Medium', lineHeight: 20, fontSize: 16, color: 'black' },

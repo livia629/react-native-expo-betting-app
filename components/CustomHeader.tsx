@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   backBtn: {
     position: "absolute",
     left: 8,
-    bottom: 13,
+    bottom: 14,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   rightBtn: {
     position: "absolute",
     right: 16,
-    bottom: 18,
+    bottom: 20,
     flexDirection: "row",
     alignItems: "center",
   },
