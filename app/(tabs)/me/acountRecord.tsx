@@ -7,6 +7,13 @@ import { MaterialIcons } from '@expo/vector-icons';
 import Svg, { Circle, Line } from 'react-native-svg';
 import { LinearGradient } from "expo-linear-gradient";
 import { Picker } from '@react-native-picker/picker';
+import CustomHeader from '@/components/CustomHeader';
+
+type AccountRow = {
+    key: string;
+    value: string;
+    showShare?: string;
+};
 
 type RouteParams = {
     currentTime: string;
@@ -35,23 +42,23 @@ export default function AccountRecordScreen() {
     useEffect(() => {
         if (isCompleteScreen) {
             navigation.setOptions({
-                headerLeft: () => null, // Hide "返回" button
-                headerBackVisible: false,
-                headerRight: () => (
-                    <TouchableOpacity onPress={() => setIsCompleteScreen(false)}>
-                        <Text style={styles.completeBtnText}>完成</Text>
-                    </TouchableOpacity>
+                header: () => (
+                    <CustomHeader
+                        title="戶口紀錄"
+                        hasBackButton={false}
+                        hasRightButton={true}
+                        onClickRight={() => setIsCompleteScreen(false)}
+                    />
                 ),
             });
         } else {
             navigation.setOptions({
-                headerLeft: () => (
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-                        <MaterialIcons name="chevron-left" size={24} color="white" style={{marginTop: 5, fontWeight: 'bold'}} />
-                        <Text style={styles.backText}>返回</Text>
-                    </TouchableOpacity>
+                header: () => (
+                    <CustomHeader
+                        title="戶口紀錄"
+                        hasBackButton={true}
+                    />
                 ),
-                headerRight: () => null,
             });
         }
     }, [isCompleteScreen, navigation]);
@@ -126,7 +133,7 @@ export default function AccountRecordScreen() {
         showShare: "No",
     });
 
-    const [acountDatas, setAcountDatas] = useState([
+    const [acountDatas, setAcountDatas] = useState<AccountRow[][]>([
         [
             { key: '參考編號', value: '-' },
             { key: '日期 / 時間', value: '-' },
@@ -146,7 +153,7 @@ export default function AccountRecordScreen() {
     ]);
 
     const handleAddRecord = () => {
-        const newEntry = [
+        const newEntry: AccountRow[] = [
             { key: '參考編號', value: newRecord.參考編號 || '-', showShare: showShareButton },
             { key: '日期 / 時間', value: newRecord.日期時間 || '-' },
             { key: '投注類別', value: newRecord.投注類別 || '-' },

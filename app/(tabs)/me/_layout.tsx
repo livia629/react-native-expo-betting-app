@@ -11,7 +11,7 @@ export default function MeStack() {
       <Stack.Screen name="index" options={{ header: () => <CustomHeader title="我" hasBackButton={false}/> }} />
       <Stack.Screen name="editProfile" options={{ header: () => <CustomHeader title="意見/建議" hasBackButton={true}/> }} />
       <Stack.Screen name="acountRecord" options={{ header: () => <CustomHeader title="戶口紀錄" hasBackButton={true}/> }} />
-      <Stack.Screen name="datePicker" options={{ header: () => <CustomHeader title="搜尋時段" hasBackButton={true}/> }} />
+      <Stack.Screen name="datePicker"/>
     </Stack>
   );
 }
