@@ -15,7 +15,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerStyle: { backgroundColor: '#01326D', height: 108 },
+        headerStyle: { backgroundColor: '#01326D', height: 110 },
         headerTintColor: 'white',
         headerTitleStyle: { fontSize: 20, fontFamily: 'NotoSansTC-Bold' },
         headerTitleAlign: 'center',
@@ -33,30 +33,32 @@ export default function TabLayout() {
         }),
       }}
     >
-      <Tabs.Screen name="index" options={{ ...tabOptions('圖片_20250201015452.png', '主頁'), title: '主頁' }} />
-      <Tabs.Screen name="discover" options={{ ...tabOptions('圖片_20250201015432.png', '馬上發現'), title: '馬上發現' }} />
-      <Tabs.Screen name="betslip" options={{ ...tabOptions('圖片_20250201015430.png', '投注區'), title: '投注區' }} />
-      <Tabs.Screen name="ewallet" options={{ ...tabOptions('圖片_20250201015427.png', '電子錢包'), title: '電子錢包' }} />
-      <Tabs.Screen name="more" options={{ ...tabOptions('圖片_20250201015418.png', '更多'), title: '更多' }} />
-      <Tabs.Screen name="me" options={{ ...tabOptions('圖片_20250201015434.png', '我'), headerShown: false }} />
+      <Tabs.Screen name="index" options={{ ...tabOptions('图标1.png', '主頁'), title: '主頁' }} />
+      <Tabs.Screen name="discover" options={{ ...tabOptions('图标2.png', '馬上發現'), title: '馬上發現' }} />
+      <Tabs.Screen name="betslip" options={{ ...tabOptions('图标3.png', '投注區'), title: '投注區' }} />
+      <Tabs.Screen name="ewallet" options={{ ...tabOptions('图标4.png', '電子錢包'), title: '電子錢包' }} />
+      <Tabs.Screen name="more" options={{ ...tabOptions('图标5.png', '更多'), title: '更多' }} />
+      <Tabs.Screen name="me" options={{ ...tabOptions('图标6.png', '我'), headerShown: false }} />
     </Tabs>
   );
 }
 
 const imageMap: { [key: string]: any } = {
-  '圖片_20250201015452.png': require('../../assets/images/圖片_20250201015452.png'),
-  '圖片_20250201015432.png': require('../../assets/images/圖片_20250201015432.png'),
-  '圖片_20250201015430.png': require('../../assets/images/圖片_20250201015430.png'),
-  '圖片_20250201015427.png': require('../../assets/images/圖片_20250201015427.png'),
-  '圖片_20250201015418.png': require('../../assets/images/圖片_20250201015418.png'),
-  '圖片_20250201015434.png': require('../../assets/images/圖片_20250201015434.png'),
+  '图标1.png': require('../../assets/images/图标1.png'),
+  '图标2.png': require('../../assets/images/图标2.png'),
+  '图标3.png': require('../../assets/images/图标3.png'),
+  '图标4.png': require('../../assets/images/图标4.png'),
+  '图标5.png': require('../../assets/images/图标5.png'),
+  '图标6.png': require('../../assets/images/图标6.png'),
 };
 
 const tabOptions = (imagePath: string, label: string) => ({
   tabBarLabel: "",
   tabBarIcon: ({ focused }: { focused: boolean }) => (
     <View style={styles.tabContainer}>
-      <Image source={imageMap[imagePath]} style={[styles.icon, focused && styles.focusedTab]} />
+      <View style={[styles.icon, focused && styles.focusedTab]}>
+        <Image source={imageMap[imagePath]} style={{width: 22, height: 22, resizeMode: 'contain',}}  />
+      </View>      
       <Text style={styles.tabText}>{label}</Text>
     </View>
   ),
@@ -71,7 +73,9 @@ const styles = StyleSheet.create({
   icon: {
     width: 60,
     height: 28,
-    resizeMode: 'contain',
+    alignItems: 'center',
+    justifyContent: 'center'
+    
   },
   focusedTab: {
     backgroundColor: '#E1EBEE',
@@ -82,5 +86,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'NotoSansTC-Regular',
     fontWeight: 'bold',
+    marginTop: -2
   },
 });

@@ -90,21 +90,21 @@ export default function ProfileScreen() {
                 <TouchableOpacity style={styles.profileCenterBox}>
                   <Image 
                     source={require('../../../assets/images/圖片_20250201015446.png')} 
-                    style={{ width: 64, height: 64, resizeMode: 'contain', borderRadius: 32 }} 
+                    style={{ width: 63, height: 63, resizeMode: 'contain', borderRadius: 31.5 }} 
                   />
                   <Text style={styles.myCouponsText}>轉賬服務</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.profileCenterBox}>
                   <Image 
                     source={require('../../../assets/images/圖片_20250201015442.png')} 
-                    style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
+                    style={{ width: 63, height: 63, resizeMode: 'contain', borderRadius: 31.5 }}
                   />
                   <Text style={styles.myCouponsText}>是次交易紀錄</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.profileCenterBox} onPress={handleAccountRecordPress}>
                   <Image 
                     source={require('../../../assets/images/圖片_20250201015440.png')} 
-                    style={{ width: 66, height: 66, resizeMode: 'contain' }} // Adjust size accordingly
+                    style={{ width: 63, height: 63, resizeMode: 'contain', borderRadius: 31.5 }}
                   />
                   <Text style={styles.myCouponsText}>戶口紀錄</Text>
                 </TouchableOpacity>
@@ -116,16 +116,16 @@ export default function ProfileScreen() {
             <View style={styles.myCouponsBox}>
                 <Image 
                   source={require('../../../assets/images/圖片_20250201015438.png')} 
-                  style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
+                  style={{ width: 32, height: 32,}}
                 />
-                <Text style={styles.myCouponsText}>我的優惠券</Text>
+                <Text style={{...styles.myCouponsText, marginLeft: 3, marginTop: -2 }}>我的優惠券</Text>
             </View>
             <View style={{...styles.myCouponsBox, marginLeft: 12}}>
                 <Image 
                   source={require('../../../assets/images/圖片_20250201015439.png')} 
                   style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
                 />
-                <Text style={styles.myCouponsText}>我的預訂</Text>
+                <Text style={{...styles.myCouponsText, marginLeft: 3, marginTop: -2}}>我的預訂</Text>
             </View>
         </View>  
             
@@ -136,7 +136,7 @@ export default function ProfileScreen() {
                         source={require('../../../assets/images/圖片_20250201015436.png')} 
                         style={{ width: 32, height: 32, resizeMode: 'contain' }} // Adjust size accordingly
                       />
-                      <Text style={styles.suggestionText}>意見/建議</Text>
+                      <Text style={styles.suggestionText}>意見/ 建議</Text>
                   </View>
                   <MaterialCommunityIcons name="chevron-right" size={24} color="black" />
               </View>
@@ -151,7 +151,7 @@ export default function ProfileScreen() {
 
 const styles = StyleSheet.create({
   profileTop: {
-    height: 177,
+    height: 175,
     paddingHorizontal: 24,
   },
   profileBalance: {
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   profileCenter: {
     marginHorizontal: 12,
     backgroundColor: 'transparent',
-    marginTop: -57,
+    marginTop: -55,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 2,
     marginTop: 10,
-    paddingHorizontal: 15,
+    paddingLeft: 10,
     paddingTop: 12,
     paddingBottom: 8,
     gap: 12
@@ -267,9 +267,8 @@ const styles = StyleSheet.create({
   },
   myCouponsText: {
     fontFamily: 'NotoSansTC-Regular',
-    lineHeight: 22,
     fontSize: 17,
-    color: '#555'
+    color: '#333'
   },
   suggestion: {
     width: '100%', 
@@ -277,7 +276,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 10,
-    marginTop: 24,
+    marginTop: 23,
     paddingHorizontal: 10,
     paddingVertical: 7,
     flexDirection: 'row',
@@ -310,7 +309,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: '#fff',
     marginTop: 40,
-    padding: 12,
+    paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'center'
